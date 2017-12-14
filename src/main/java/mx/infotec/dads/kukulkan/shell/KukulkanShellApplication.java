@@ -1,4 +1,4 @@
-package mx.infotec.dads.kukulkan.shell.kukulkanshell;
+package mx.infotec.dads.kukulkan.shell;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
