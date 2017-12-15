@@ -51,3 +51,11 @@
 1513232782416:archetypes
 1513233524855:r
 1513233537300:archetypes
+1513316528432:ping --host google.com
+1513316540935:ping google.com
+1513316591079:ls -ltra
+1513316758985:help
+1513316775005:help --command archetypes
+1513316989443:ping --host google.com
+1513317471847:iggol.o
+1513317491307:ping google.com
