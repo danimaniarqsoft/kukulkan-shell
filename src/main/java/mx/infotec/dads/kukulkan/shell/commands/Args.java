@@ -1,29 +1,22 @@
 package mx.infotec.dads.kukulkan.shell.commands;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.validation.constraints.Min;
+import java.io.File;
 
 import com.beust.jcommander.Parameter;
 
 public class Args {
-	@Parameter
-	private List<String> parameters = new ArrayList<>();
 
-	@Min(3)
-	@Parameter(names = { "-log", "-verbose" }, description = "Level of verbosity")
-	private Integer verbose = 1;
+    @Parameter(names = "-file", description = "File with 3k extension")
+    private File file;
 
-	@Parameter(names = "-groups", description = "Comma-separated list of group names to be run")
-	private String groups;
+    
+    @Override
+    public String toString() {
+        return "Args{" + "parameters=" + getFile() + '}';
+    }
 
-	@Parameter(names = "-debug", description = "Debug mode")
-	private boolean debug = false;
 
-	@Override
-	public String toString() {
-		return "Args{" + "parameters=" + parameters + ", verbose=" + verbose + ", groups='" + groups + '\'' + ", debug="
-				+ debug + '}';
-	}
+    public File getFile() {
+        return file;
+    }
 }

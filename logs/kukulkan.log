@@ -2369,3 +2369,1228 @@ java.net.ConnectException: Connection refused (Connection refused)
 2017-12-15 15:21:37,721 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
 2017-12-15 15:21:37,721 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
 2017-12-15 15:21:37,722 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.
+2017-12-15 15:33:07,540 WARN  [Thread-18] de.flapdoodle.embed.mongo.runtime.Mongod : sendShutdown /127.0.0.1:27117
+java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at de.flapdoodle.embed.mongo.runtime.Mongod.sendShutdown(Mongod.java:86)
+	at de.flapdoodle.embed.mongo.AbstractMongoProcess.sendStopToMongoInstance(AbstractMongoProcess.java:133)
+	at de.flapdoodle.embed.mongo.AbstractMongoProcess.stopInternal(AbstractMongoProcess.java:107)
+	at de.flapdoodle.embed.process.runtime.AbstractProcess.stop(AbstractProcess.java:170)
+	at de.flapdoodle.embed.process.runtime.Executable.stop(Executable.java:73)
+	at de.flapdoodle.embed.process.runtime.Executable$JobKiller.run(Executable.java:90)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-15 15:33:07,643 WARN  [Thread-18] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod with db command, try next
+2017-12-15 15:33:07,654 INFO  [Thread-18] de.flapdoodle.embed.process.runtime.ProcessControl : execSuccess: false [kill, -2, 22439]
+2017-12-15 15:33:07,654 WARN  [Thread-18] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod, try next
+2017-12-15 15:33:07,655 WARN  [Thread-18] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod the second time, try one last thing
+2017-12-15 15:33:12,785 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 23165 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 15:33:12,786 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 15:33:12,786 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 15:33:14,692 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@36340b26
+2017-12-15 15:33:15,409 WARN  [restartedMain] org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'kukulkanGeneration': Unsatisfied dependency expressed through field 'shell'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'shell' defined in class path resource [org/springframework/shell/SpringShellAutoConfiguration.class]: Unsatisfied dependency expressed through method 'shell' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'resultHandlerConfig': Invocation of init method failed; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mainResultHandler': Unsatisfied dependency expressed through method 'setResultHandlers' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'parameterValidationExceptionResultHandler': Unsatisfied dependency expressed through field 'parameterResolvers'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'standardParameterResolver': Unsatisfied dependency expressed through method 'setValueProviders' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commandValueProvider' defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]: Unsatisfied dependency expressed through method 'commandValueProvider' parameter 0; nested exception is org.springframework.beans.factory.BeanCurrentlyInCreationException: Error creating bean with name 'shell': Requested bean is currently in creation: Is there an unresolvable circular reference?
+2017-12-15 15:33:15,542 ERROR [restartedMain] org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+   kukulkanGeneration (field private org.springframework.shell.Shell mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.shell)
+┌─────┐
+|  shell defined in class path resource [org/springframework/shell/SpringShellAutoConfiguration.class]
+↑     ↓
+|  resultHandlerConfig
+↑     ↓
+|  mainResultHandler
+↑     ↓
+|  parameterValidationExceptionResultHandler (field private java.util.List org.springframework.shell.result.ParameterValidationExceptionResultHandler.parameterResolvers)
+↑     ↓
+|  standardParameterResolver
+↑     ↓
+|  commandValueProvider defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]
+└─────┘
+
+
+2017-12-15 15:33:31,525 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 23410 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 15:33:31,525 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 15:33:31,526 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 15:33:33,178 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@46becaa9
+2017-12-15 15:33:33,722 WARN  [restartedMain] org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'kukulkanGeneration': Unsatisfied dependency expressed through field 'shell'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'shell' defined in class path resource [org/springframework/shell/SpringShellAutoConfiguration.class]: Unsatisfied dependency expressed through method 'shell' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'resultHandlerConfig': Invocation of init method failed; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mainResultHandler': Unsatisfied dependency expressed through method 'setResultHandlers' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'parameterValidationExceptionResultHandler': Unsatisfied dependency expressed through field 'parameterResolvers'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'standardParameterResolver': Unsatisfied dependency expressed through method 'setValueProviders' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commandValueProvider' defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]: Unsatisfied dependency expressed through method 'commandValueProvider' parameter 0; nested exception is org.springframework.beans.factory.BeanCurrentlyInCreationException: Error creating bean with name 'shell': Requested bean is currently in creation: Is there an unresolvable circular reference?
+2017-12-15 15:33:33,847 ERROR [restartedMain] org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+   kukulkanGeneration (field private org.springframework.shell.Shell mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.shell)
+┌─────┐
+|  shell defined in class path resource [org/springframework/shell/SpringShellAutoConfiguration.class]
+↑     ↓
+|  resultHandlerConfig
+↑     ↓
+|  mainResultHandler
+↑     ↓
+|  parameterValidationExceptionResultHandler (field private java.util.List org.springframework.shell.result.ParameterValidationExceptionResultHandler.parameterResolvers)
+↑     ↓
+|  standardParameterResolver
+↑     ↓
+|  commandValueProvider defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]
+└─────┘
+
+
+2017-12-15 15:34:05,570 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 23595 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 15:34:05,571 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 15:34:05,571 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 15:34:07,263 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@5197984f
+2017-12-15 15:34:07,856 WARN  [restartedMain] org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'kukulkanGeneration': Unsatisfied dependency expressed through field 'shell'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'shell' defined in class path resource [org/springframework/shell/SpringShellAutoConfiguration.class]: Unsatisfied dependency expressed through method 'shell' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'resultHandlerConfig': Invocation of init method failed; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mainResultHandler': Unsatisfied dependency expressed through method 'setResultHandlers' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'parameterValidationExceptionResultHandler': Unsatisfied dependency expressed through field 'parameterResolvers'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'standardParameterResolver': Unsatisfied dependency expressed through method 'setValueProviders' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commandValueProvider' defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]: Unsatisfied dependency expressed through method 'commandValueProvider' parameter 0; nested exception is org.springframework.beans.factory.BeanCurrentlyInCreationException: Error creating bean with name 'shell': Requested bean is currently in creation: Is there an unresolvable circular reference?
+2017-12-15 15:34:07,989 ERROR [restartedMain] org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+   kukulkanGeneration (field private org.springframework.shell.Shell mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.shell)
+┌─────┐
+|  shell defined in class path resource [org/springframework/shell/SpringShellAutoConfiguration.class]
+↑     ↓
+|  resultHandlerConfig
+↑     ↓
+|  mainResultHandler
+↑     ↓
+|  parameterValidationExceptionResultHandler (field private java.util.List org.springframework.shell.result.ParameterValidationExceptionResultHandler.parameterResolvers)
+↑     ↓
+|  standardParameterResolver
+↑     ↓
+|  commandValueProvider defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]
+└─────┘
+
+
+2017-12-15 15:34:40,605 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 23713 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 15:34:40,606 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 15:34:40,606 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 15:34:42,485 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@23c5f85b
+2017-12-15 15:34:43,321 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.config.DatabaseConfiguration : Configuring Mongobee
+2017-12-15 15:34:43,416 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee aqcuired process lock, starting the data migration sequence..
+2017-12-15 15:34:43,616 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
+2017-12-15 15:34:43,616 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
+2017-12-15 15:34:43,619 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.
+2017-12-15 15:35:20,532 WARN  [Thread-5] de.flapdoodle.embed.mongo.runtime.Mongod : sendShutdown /127.0.0.1:27117
+java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at de.flapdoodle.embed.mongo.runtime.Mongod.sendShutdown(Mongod.java:86)
+	at de.flapdoodle.embed.mongo.AbstractMongoProcess.sendStopToMongoInstance(AbstractMongoProcess.java:133)
+	at de.flapdoodle.embed.mongo.AbstractMongoProcess.stopInternal(AbstractMongoProcess.java:107)
+	at de.flapdoodle.embed.process.runtime.AbstractProcess.stop(AbstractProcess.java:170)
+	at de.flapdoodle.embed.process.runtime.Executable.stop(Executable.java:73)
+	at de.flapdoodle.embed.process.runtime.Executable$JobKiller.run(Executable.java:90)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-15 15:35:20,632 WARN  [Thread-5] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod with db command, try next
+2017-12-15 15:35:20,645 INFO  [Thread-5] de.flapdoodle.embed.process.runtime.ProcessControl : execSuccess: false [kill, -2, 23744]
+2017-12-15 15:35:20,646 WARN  [Thread-5] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod, try next
+2017-12-15 15:35:20,646 WARN  [Thread-5] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod the second time, try one last thing
+2017-12-15 15:35:25,458 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 23915 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 15:35:25,458 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 15:35:25,458 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 15:35:27,125 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@5197984f
+2017-12-15 15:35:27,674 WARN  [restartedMain] org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'kukulkanGeneration': Unsatisfied dependency expressed through field 'parser'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.shell.jline.JLineShellAutoConfiguration': Unsatisfied dependency expressed through field 'shell'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'shell' defined in class path resource [org/springframework/shell/SpringShellAutoConfiguration.class]: Unsatisfied dependency expressed through method 'shell' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'resultHandlerConfig': Invocation of init method failed; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mainResultHandler': Unsatisfied dependency expressed through method 'setResultHandlers' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'parameterValidationExceptionResultHandler': Unsatisfied dependency expressed through field 'parameterResolvers'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'standardParameterResolver': Unsatisfied dependency expressed through method 'setValueProviders' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commandValueProvider' defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]: Unsatisfied dependency expressed through method 'commandValueProvider' parameter 0; nested exception is org.springframework.beans.factory.BeanCurrentlyInCreationException: Error creating bean with name 'shell': Requested bean is currently in creation: Is there an unresolvable circular reference?
+2017-12-15 15:35:27,798 ERROR [restartedMain] org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+   kukulkanGeneration (field private org.jline.reader.Parser mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.parser)
+      ↓
+   org.springframework.shell.jline.JLineShellAutoConfiguration (field private org.springframework.shell.Shell org.springframework.shell.jline.JLineShellAutoConfiguration.shell)
+┌─────┐
+|  shell defined in class path resource [org/springframework/shell/SpringShellAutoConfiguration.class]
+↑     ↓
+|  resultHandlerConfig
+↑     ↓
+|  mainResultHandler
+↑     ↓
+|  parameterValidationExceptionResultHandler (field private java.util.List org.springframework.shell.result.ParameterValidationExceptionResultHandler.parameterResolvers)
+↑     ↓
+|  standardParameterResolver
+↑     ↓
+|  commandValueProvider defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]
+└─────┘
+
+
+2017-12-15 15:36:19,433 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 24043 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 15:36:19,434 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 15:36:19,434 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 15:36:21,132 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@5197984f
+2017-12-15 15:36:21,893 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.config.DatabaseConfiguration : Configuring Mongobee
+2017-12-15 15:36:21,991 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee aqcuired process lock, starting the data migration sequence..
+2017-12-15 15:36:22,202 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
+2017-12-15 15:36:22,202 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
+2017-12-15 15:36:22,205 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.
+2017-12-15 15:39:44,915 WARN  [Thread-6] de.flapdoodle.embed.mongo.runtime.Mongod : sendShutdown /127.0.0.1:27117
+java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at de.flapdoodle.embed.mongo.runtime.Mongod.sendShutdown(Mongod.java:86)
+	at de.flapdoodle.embed.mongo.AbstractMongoProcess.sendStopToMongoInstance(AbstractMongoProcess.java:133)
+	at de.flapdoodle.embed.mongo.AbstractMongoProcess.stopInternal(AbstractMongoProcess.java:107)
+	at de.flapdoodle.embed.process.runtime.AbstractProcess.stop(AbstractProcess.java:170)
+	at de.flapdoodle.embed.process.runtime.AbstractProcess$JobKiller.run(AbstractProcess.java:243)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-15 15:39:45,015 WARN  [Thread-6] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod with db command, try next
+2017-12-15 15:39:45,027 INFO  [Thread-6] de.flapdoodle.embed.process.runtime.ProcessControl : execSuccess: false [kill, -2, 24074]
+2017-12-15 15:39:45,027 WARN  [Thread-6] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod, try next
+2017-12-15 15:39:45,027 WARN  [Thread-6] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod the second time, try one last thing
+2017-12-15 15:39:50,374 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 24328 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 15:39:50,374 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 15:39:50,374 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 15:39:52,026 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@5197984f
+2017-12-15 15:39:52,885 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.config.DatabaseConfiguration : Configuring Mongobee
+2017-12-15 15:39:52,980 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee aqcuired process lock, starting the data migration sequence..
+2017-12-15 15:39:53,168 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
+2017-12-15 15:39:53,168 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
+2017-12-15 15:39:53,170 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.
+2017-12-15 15:46:57,068 WARN  [Thread-6] de.flapdoodle.embed.mongo.runtime.Mongod : sendShutdown /127.0.0.1:27117
+java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at de.flapdoodle.embed.mongo.runtime.Mongod.sendShutdown(Mongod.java:86)
+	at de.flapdoodle.embed.mongo.AbstractMongoProcess.sendStopToMongoInstance(AbstractMongoProcess.java:133)
+	at de.flapdoodle.embed.mongo.AbstractMongoProcess.stopInternal(AbstractMongoProcess.java:107)
+	at de.flapdoodle.embed.process.runtime.AbstractProcess.stop(AbstractProcess.java:170)
+	at de.flapdoodle.embed.process.runtime.AbstractProcess$JobKiller.run(AbstractProcess.java:243)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-15 15:46:57,169 WARN  [Thread-6] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod with db command, try next
+2017-12-15 15:46:57,181 INFO  [Thread-6] de.flapdoodle.embed.process.runtime.ProcessControl : execSuccess: false [kill, -2, 24359]
+2017-12-15 15:46:57,181 WARN  [Thread-6] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod, try next
+2017-12-15 15:46:57,181 WARN  [Thread-6] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod the second time, try one last thing
+2017-12-15 15:47:01,644 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 24981 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 15:47:01,644 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 15:47:01,645 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 15:47:03,611 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@7bd9c7fa
+2017-12-15 15:47:04,509 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.config.DatabaseConfiguration : Configuring Mongobee
+2017-12-15 15:47:04,610 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee aqcuired process lock, starting the data migration sequence..
+2017-12-15 15:47:04,826 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
+2017-12-15 15:47:04,826 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
+2017-12-15 15:47:04,829 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.
+2017-12-15 15:52:55,272 WARN  [Thread-5] de.flapdoodle.embed.mongo.runtime.Mongod : sendShutdown /127.0.0.1:27117
+java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at de.flapdoodle.embed.mongo.runtime.Mongod.sendShutdown(Mongod.java:86)
+	at de.flapdoodle.embed.mongo.AbstractMongoProcess.sendStopToMongoInstance(AbstractMongoProcess.java:133)
+	at de.flapdoodle.embed.mongo.AbstractMongoProcess.stopInternal(AbstractMongoProcess.java:107)
+	at de.flapdoodle.embed.process.runtime.AbstractProcess.stop(AbstractProcess.java:170)
+	at de.flapdoodle.embed.process.runtime.Executable.stop(Executable.java:73)
+	at de.flapdoodle.embed.process.runtime.Executable$JobKiller.run(Executable.java:90)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-15 15:52:55,373 WARN  [Thread-5] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod with db command, try next
+2017-12-15 15:52:55,384 INFO  [Thread-5] de.flapdoodle.embed.process.runtime.ProcessControl : execSuccess: false [kill, -2, 25013]
+2017-12-15 15:52:55,385 WARN  [Thread-5] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod, try next
+2017-12-15 15:52:55,385 WARN  [Thread-5] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod the second time, try one last thing
+2017-12-15 15:54:21,156 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 25768 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 15:54:21,157 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 15:54:21,157 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 15:54:22,894 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@5ba4f7ce
+2017-12-15 15:54:23,782 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.config.DatabaseConfiguration : Configuring Mongobee
+2017-12-15 15:54:23,882 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee aqcuired process lock, starting the data migration sequence..
+2017-12-15 15:54:24,083 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
+2017-12-15 15:54:24,083 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
+2017-12-15 15:54:24,086 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.
+2017-12-15 15:59:58,601 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 25956 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 15:59:58,602 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 15:59:58,602 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 16:00:00,413 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@5ba4f7ce
+2017-12-15 16:00:01,308 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.config.DatabaseConfiguration : Configuring Mongobee
+2017-12-15 16:00:01,410 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee aqcuired process lock, starting the data migration sequence..
+2017-12-15 16:00:01,629 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
+2017-12-15 16:00:01,629 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
+2017-12-15 16:00:01,632 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.
+2017-12-15 16:00:25,968 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.grammar.GrammarUtil : Interpreting file /home/daniel/git/kukulkan-shell/test.3k
+2017-12-15 16:00:26,027 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.util.SchemaPropertiesParser : Parsing the column Persona
+2017-12-15 16:00:26,027 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.util.SchemaPropertiesParser : Trim the value persona
+2017-12-15 16:00:26,031 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.util.SchemaPropertiesParser : Parsing the column Direccion
+2017-12-15 16:00:26,031 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.util.SchemaPropertiesParser : Trim the value direccion
+2017-12-15 16:00:26,034 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.technology.angularspring.AngularSpringRepositoryTecnology : doBeforeProcessDataModelGroup
+2017-12-15 16:00:26,090 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/layouts/navbar/navbar.html
+2017-12-15 16:00:26,108 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/global.json
+2017-12-15 16:00:26,111 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/global.json
+2017-12-15 16:00:26,117 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/index.html
+2017-12-15 16:00:26,118 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.technology.angularspring.AngularSpringRepositoryTecnology : visitDomainModelElement
+2017-12-15 16:00:26,119 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityControllerJs entity.controller.js.ftl
+2017-12-15 16:00:26,154 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona.controller.js
+2017-12-15 16:00:26,155 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDeleteDialogControllerJs entity-delete-dialog.controller.js.ftl
+2017-12-15 16:00:26,157 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-delete-dialog.controller.js
+2017-12-15 16:00:26,157 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDeleteDialogHtml entity-delete-dialog.html.ftl
+2017-12-15 16:00:26,159 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-delete-dialog.html
+2017-12-15 16:00:26,159 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDetailControllerJs entity-detail.controller.js.ftl
+2017-12-15 16:00:26,161 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-detail.controller.js
+2017-12-15 16:00:26,161 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDetailHtml entity-detail.html.ftl
+2017-12-15 16:00:26,166 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-detail.html
+2017-12-15 16:00:26,183 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDialogControllerJs entity-dialog.controller.js.ftl
+2017-12-15 16:00:26,185 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-dialog.controller.js
+2017-12-15 16:00:26,187 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDialogHtml entity-detail.html.ftl
+2017-12-15 16:00:26,190 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-dialog.html
+2017-12-15 16:00:26,211 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityHtml entity.html.ftl
+2017-12-15 16:00:26,216 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/personas.html
+2017-12-15 16:00:26,217 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntitySearchServiceJs entity.search.service.js.ftl
+2017-12-15 16:00:26,218 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona.search.service.js
+2017-12-15 16:00:26,218 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityServiceJs entity.service.js.ftl
+2017-12-15 16:00:26,221 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona.service.js
+2017-12-15 16:00:26,221 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityStateJs entity.state.js.ftl
+2017-12-15 16:00:26,225 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona.state.js
+2017-12-15 16:00:26,225 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillIdiomaEsJs entity.json.ftl
+2017-12-15 16:00:26,227 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/persona.json
+2017-12-15 16:00:26,228 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillIdiomaEnJs entity.json.ftl
+2017-12-15 16:00:26,229 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/persona.json
+2017-12-15 16:00:26,230 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.web.RestResourceLayerTask : visitDomainModelElement mx.infotec.dads.mongo 
+2017-12-15 16:00:26,235 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/web/rest/PersonaResource.java
+2017-12-15 16:00:26,239 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.domain.DomainLayerServiceImpl : visitDomainModelElement for mx.infotec.dads.mongo
+2017-12-15 16:00:26,243 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/domain/Persona.java
+2017-12-15 16:00:26,246 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.service.SpringServiceLayerServiceImpl : visitDomainModelElement: mx.infotec.dads.mongo 
+2017-12-15 16:00:26,248 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/PersonaService.java
+2017-12-15 16:00:26,250 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/impl/PersonaServiceImpl.java
+2017-12-15 16:00:26,250 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.repository.RepositoryLayerServiceImpl : repositoryLayerTask for dommain
+2017-12-15 16:00:26,252 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/repository/PersonaRepository.java
+2017-12-15 16:00:26,253 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.technology.angularspring.AngularSpringRepositoryTecnology : visitDomainModelElement
+2017-12-15 16:00:26,253 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityControllerJs entity.controller.js.ftl
+2017-12-15 16:00:26,253 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.controller.js
+2017-12-15 16:00:26,253 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDeleteDialogControllerJs entity-delete-dialog.controller.js.ftl
+2017-12-15 16:00:26,253 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-delete-dialog.controller.js
+2017-12-15 16:00:26,253 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDeleteDialogHtml entity-delete-dialog.html.ftl
+2017-12-15 16:00:26,253 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-delete-dialog.html
+2017-12-15 16:00:26,253 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDetailControllerJs entity-detail.controller.js.ftl
+2017-12-15 16:00:26,253 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-detail.controller.js
+2017-12-15 16:00:26,253 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDetailHtml entity-detail.html.ftl
+2017-12-15 16:00:26,254 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-detail.html
+2017-12-15 16:00:26,254 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDialogControllerJs entity-dialog.controller.js.ftl
+2017-12-15 16:00:26,255 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-dialog.controller.js
+2017-12-15 16:00:26,255 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDialogHtml entity-detail.html.ftl
+2017-12-15 16:00:26,255 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-dialog.html
+2017-12-15 16:00:26,257 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityHtml entity.html.ftl
+2017-12-15 16:00:26,257 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccions.html
+2017-12-15 16:00:26,257 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntitySearchServiceJs entity.search.service.js.ftl
+2017-12-15 16:00:26,257 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.search.service.js
+2017-12-15 16:00:26,257 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityServiceJs entity.service.js.ftl
+2017-12-15 16:00:26,258 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.service.js
+2017-12-15 16:00:26,258 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityStateJs entity.state.js.ftl
+2017-12-15 16:00:26,258 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.state.js
+2017-12-15 16:00:26,258 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillIdiomaEsJs entity.json.ftl
+2017-12-15 16:00:26,258 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/direccion.json
+2017-12-15 16:00:26,258 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillIdiomaEnJs entity.json.ftl
+2017-12-15 16:00:26,259 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/direccion.json
+2017-12-15 16:00:26,259 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.web.RestResourceLayerTask : visitDomainModelElement mx.infotec.dads.mongo 
+2017-12-15 16:00:26,259 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/web/rest/DireccionResource.java
+2017-12-15 16:00:26,259 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.domain.DomainLayerServiceImpl : visitDomainModelElement for mx.infotec.dads.mongo
+2017-12-15 16:00:26,259 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/domain/Direccion.java
+2017-12-15 16:00:26,262 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.service.SpringServiceLayerServiceImpl : visitDomainModelElement: mx.infotec.dads.mongo 
+2017-12-15 16:00:26,262 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/DireccionService.java
+2017-12-15 16:00:26,262 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/impl/DireccionServiceImpl.java
+2017-12-15 16:00:26,262 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.repository.RepositoryLayerServiceImpl : repositoryLayerTask for dommain
+2017-12-15 16:00:26,262 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/repository/DireccionRepository.java
+2017-12-15 16:00:26,265 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona.controller.js
+2017-12-15 16:00:26,265 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-delete-dialog.controller.js
+2017-12-15 16:00:26,265 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-delete-dialog.html
+2017-12-15 16:00:26,266 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-detail.controller.js
+2017-12-15 16:00:26,266 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-detail.html
+2017-12-15 16:00:26,266 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-dialog.controller.js
+2017-12-15 16:00:26,267 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-dialog.html
+2017-12-15 16:00:26,267 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/personas.html
+2017-12-15 16:00:26,268 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona.search.service.js
+2017-12-15 16:00:26,268 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona.service.js
+2017-12-15 16:00:26,268 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona.state.js
+2017-12-15 16:00:26,269 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/persona.json
+2017-12-15 16:00:26,269 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/persona.json
+2017-12-15 16:00:26,269 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/web/rest/PersonaResource.java
+2017-12-15 16:00:26,269 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/domain/Persona.java
+2017-12-15 16:00:26,270 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/PersonaService.java
+2017-12-15 16:00:26,270 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/impl/PersonaServiceImpl.java
+2017-12-15 16:00:26,271 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/repository/PersonaRepository.java
+2017-12-15 16:00:26,271 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.controller.js
+2017-12-15 16:00:26,271 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-delete-dialog.controller.js
+2017-12-15 16:00:26,271 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-delete-dialog.html
+2017-12-15 16:00:26,272 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-detail.controller.js
+2017-12-15 16:00:26,272 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-detail.html
+2017-12-15 16:00:26,272 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-dialog.controller.js
+2017-12-15 16:00:26,272 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-dialog.html
+2017-12-15 16:00:26,273 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccions.html
+2017-12-15 16:00:26,273 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.search.service.js
+2017-12-15 16:00:26,274 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.service.js
+2017-12-15 16:00:26,274 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.state.js
+2017-12-15 16:00:26,274 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/direccion.json
+2017-12-15 16:00:26,274 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/direccion.json
+2017-12-15 16:00:26,275 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/web/rest/DireccionResource.java
+2017-12-15 16:00:26,275 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/domain/Direccion.java
+2017-12-15 16:00:26,276 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/DireccionService.java
+2017-12-15 16:00:26,276 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/impl/DireccionServiceImpl.java
+2017-12-15 16:00:26,276 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/repository/DireccionRepository.java
+2017-12-15 16:00:26,277 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/layouts/navbar/navbar.html
+2017-12-15 16:00:26,277 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/global.json
+2017-12-15 16:00:26,277 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/global.json
+2017-12-15 16:00:26,278 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/index.html
+2017-12-15 16:01:07,837 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.grammar.GrammarUtil : Interpreting file /home/daniel/git/kukulkan-shell/test.3k
+2017-12-15 16:01:07,841 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.util.SchemaPropertiesParser : Parsing the column Persona
+2017-12-15 16:01:07,841 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.util.SchemaPropertiesParser : Trim the value persona
+2017-12-15 16:01:07,841 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.util.SchemaPropertiesParser : Parsing the column Direccion
+2017-12-15 16:01:07,841 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.util.SchemaPropertiesParser : Trim the value direccion
+2017-12-15 16:01:07,842 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.technology.angularspring.AngularSpringRepositoryTecnology : doBeforeProcessDataModelGroup
+2017-12-15 16:01:07,843 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/layouts/navbar/navbar.html
+2017-12-15 16:01:07,844 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/global.json
+2017-12-15 16:01:07,847 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/global.json
+2017-12-15 16:01:07,848 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/index.html
+2017-12-15 16:01:07,848 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.technology.angularspring.AngularSpringRepositoryTecnology : visitDomainModelElement
+2017-12-15 16:01:07,848 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityControllerJs entity.controller.js.ftl
+2017-12-15 16:01:07,849 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona.controller.js
+2017-12-15 16:01:07,849 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDeleteDialogControllerJs entity-delete-dialog.controller.js.ftl
+2017-12-15 16:01:07,850 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-delete-dialog.controller.js
+2017-12-15 16:01:07,850 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDeleteDialogHtml entity-delete-dialog.html.ftl
+2017-12-15 16:01:07,851 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-delete-dialog.html
+2017-12-15 16:01:07,851 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDetailControllerJs entity-detail.controller.js.ftl
+2017-12-15 16:01:07,852 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-detail.controller.js
+2017-12-15 16:01:07,852 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDetailHtml entity-detail.html.ftl
+2017-12-15 16:01:07,853 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-detail.html
+2017-12-15 16:01:07,857 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDialogControllerJs entity-dialog.controller.js.ftl
+2017-12-15 16:01:07,857 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-dialog.controller.js
+2017-12-15 16:01:07,858 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDialogHtml entity-detail.html.ftl
+2017-12-15 16:01:07,858 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-dialog.html
+2017-12-15 16:01:07,863 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityHtml entity.html.ftl
+2017-12-15 16:01:07,864 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/personas.html
+2017-12-15 16:01:07,864 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntitySearchServiceJs entity.search.service.js.ftl
+2017-12-15 16:01:07,865 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona.search.service.js
+2017-12-15 16:01:07,865 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityServiceJs entity.service.js.ftl
+2017-12-15 16:01:07,866 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona.service.js
+2017-12-15 16:01:07,866 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityStateJs entity.state.js.ftl
+2017-12-15 16:01:07,867 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona.state.js
+2017-12-15 16:01:07,867 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillIdiomaEsJs entity.json.ftl
+2017-12-15 16:01:07,868 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/persona.json
+2017-12-15 16:01:07,868 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillIdiomaEnJs entity.json.ftl
+2017-12-15 16:01:07,869 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/persona.json
+2017-12-15 16:01:07,869 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.web.RestResourceLayerTask : visitDomainModelElement mx.infotec.dads.mongo 
+2017-12-15 16:01:07,870 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/web/rest/PersonaResource.java
+2017-12-15 16:01:07,870 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.domain.DomainLayerServiceImpl : visitDomainModelElement for mx.infotec.dads.mongo
+2017-12-15 16:01:07,871 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/domain/Persona.java
+2017-12-15 16:01:07,872 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.service.SpringServiceLayerServiceImpl : visitDomainModelElement: mx.infotec.dads.mongo 
+2017-12-15 16:01:07,872 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/PersonaService.java
+2017-12-15 16:01:07,873 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/impl/PersonaServiceImpl.java
+2017-12-15 16:01:07,873 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.repository.RepositoryLayerServiceImpl : repositoryLayerTask for dommain
+2017-12-15 16:01:07,874 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/repository/PersonaRepository.java
+2017-12-15 16:01:07,874 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.technology.angularspring.AngularSpringRepositoryTecnology : visitDomainModelElement
+2017-12-15 16:01:07,874 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityControllerJs entity.controller.js.ftl
+2017-12-15 16:01:07,874 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.controller.js
+2017-12-15 16:01:07,874 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDeleteDialogControllerJs entity-delete-dialog.controller.js.ftl
+2017-12-15 16:01:07,875 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-delete-dialog.controller.js
+2017-12-15 16:01:07,875 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDeleteDialogHtml entity-delete-dialog.html.ftl
+2017-12-15 16:01:07,875 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-delete-dialog.html
+2017-12-15 16:01:07,875 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDetailControllerJs entity-detail.controller.js.ftl
+2017-12-15 16:01:07,875 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-detail.controller.js
+2017-12-15 16:01:07,875 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDetailHtml entity-detail.html.ftl
+2017-12-15 16:01:07,875 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-detail.html
+2017-12-15 16:01:07,876 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDialogControllerJs entity-dialog.controller.js.ftl
+2017-12-15 16:01:07,876 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-dialog.controller.js
+2017-12-15 16:01:07,876 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDialogHtml entity-detail.html.ftl
+2017-12-15 16:01:07,876 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-dialog.html
+2017-12-15 16:01:07,877 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityHtml entity.html.ftl
+2017-12-15 16:01:07,877 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccions.html
+2017-12-15 16:01:07,877 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntitySearchServiceJs entity.search.service.js.ftl
+2017-12-15 16:01:07,878 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.search.service.js
+2017-12-15 16:01:07,878 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityServiceJs entity.service.js.ftl
+2017-12-15 16:01:07,878 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.service.js
+2017-12-15 16:01:07,878 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityStateJs entity.state.js.ftl
+2017-12-15 16:01:07,878 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.state.js
+2017-12-15 16:01:07,878 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillIdiomaEsJs entity.json.ftl
+2017-12-15 16:01:07,878 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/direccion.json
+2017-12-15 16:01:07,878 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillIdiomaEnJs entity.json.ftl
+2017-12-15 16:01:07,878 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/direccion.json
+2017-12-15 16:01:07,879 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.web.RestResourceLayerTask : visitDomainModelElement mx.infotec.dads.mongo 
+2017-12-15 16:01:07,879 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/web/rest/DireccionResource.java
+2017-12-15 16:01:07,879 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.domain.DomainLayerServiceImpl : visitDomainModelElement for mx.infotec.dads.mongo
+2017-12-15 16:01:07,879 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/domain/Direccion.java
+2017-12-15 16:01:07,881 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.service.SpringServiceLayerServiceImpl : visitDomainModelElement: mx.infotec.dads.mongo 
+2017-12-15 16:01:07,881 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/DireccionService.java
+2017-12-15 16:01:07,881 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/impl/DireccionServiceImpl.java
+2017-12-15 16:01:07,881 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.repository.RepositoryLayerServiceImpl : repositoryLayerTask for dommain
+2017-12-15 16:01:07,881 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/repository/DireccionRepository.java
+2017-12-15 16:01:07,882 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona.controller.js
+2017-12-15 16:01:07,882 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-delete-dialog.controller.js
+2017-12-15 16:01:07,882 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-delete-dialog.html
+2017-12-15 16:01:07,882 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-detail.controller.js
+2017-12-15 16:01:07,882 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-detail.html
+2017-12-15 16:01:07,883 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-dialog.controller.js
+2017-12-15 16:01:07,883 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona-dialog.html
+2017-12-15 16:01:07,883 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/personas.html
+2017-12-15 16:01:07,883 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona.search.service.js
+2017-12-15 16:01:07,883 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona.service.js
+2017-12-15 16:01:07,883 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/persona/persona.state.js
+2017-12-15 16:01:07,884 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/persona.json
+2017-12-15 16:01:07,884 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/persona.json
+2017-12-15 16:01:07,884 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/web/rest/PersonaResource.java
+2017-12-15 16:01:07,884 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/domain/Persona.java
+2017-12-15 16:01:07,884 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/PersonaService.java
+2017-12-15 16:01:07,885 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/impl/PersonaServiceImpl.java
+2017-12-15 16:01:07,885 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/repository/PersonaRepository.java
+2017-12-15 16:01:07,885 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.controller.js
+2017-12-15 16:01:07,885 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-delete-dialog.controller.js
+2017-12-15 16:01:07,885 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-delete-dialog.html
+2017-12-15 16:01:07,886 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-detail.controller.js
+2017-12-15 16:01:07,886 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-detail.html
+2017-12-15 16:01:07,886 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-dialog.controller.js
+2017-12-15 16:01:07,886 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-dialog.html
+2017-12-15 16:01:07,886 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccions.html
+2017-12-15 16:01:07,887 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.search.service.js
+2017-12-15 16:01:07,887 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.service.js
+2017-12-15 16:01:07,887 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.state.js
+2017-12-15 16:01:07,887 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/direccion.json
+2017-12-15 16:01:07,887 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/direccion.json
+2017-12-15 16:01:07,887 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/web/rest/DireccionResource.java
+2017-12-15 16:01:07,888 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/domain/Direccion.java
+2017-12-15 16:01:07,888 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/DireccionService.java
+2017-12-15 16:01:07,888 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/impl/DireccionServiceImpl.java
+2017-12-15 16:01:07,888 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/repository/DireccionRepository.java
+2017-12-15 16:01:07,888 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/layouts/navbar/navbar.html
+2017-12-15 16:01:07,889 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/global.json
+2017-12-15 16:01:07,889 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/global.json
+2017-12-15 16:01:07,889 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/index.html
+2017-12-15 16:01:51,930 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 26299 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 16:01:51,931 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 16:01:51,931 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 16:01:53,790 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@5ba4f7ce
+2017-12-15 16:01:54,601 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.config.DatabaseConfiguration : Configuring Mongobee
+2017-12-15 16:01:54,699 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee aqcuired process lock, starting the data migration sequence..
+2017-12-15 16:01:54,934 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
+2017-12-15 16:01:54,934 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
+2017-12-15 16:01:54,936 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.
+2017-12-15 16:02:05,518 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.grammar.GrammarUtil : Interpreting file /home/daniel/git/kukulkan-shell/test.3k
+2017-12-15 16:02:05,591 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.util.SchemaPropertiesParser : Parsing the column Direccion
+2017-12-15 16:02:05,591 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.util.SchemaPropertiesParser : Trim the value direccion
+2017-12-15 16:02:05,600 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.technology.angularspring.AngularSpringRepositoryTecnology : doBeforeProcessDataModelGroup
+2017-12-15 16:02:05,675 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/layouts/navbar/navbar.html
+2017-12-15 16:02:05,700 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/global.json
+2017-12-15 16:02:05,705 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/global.json
+2017-12-15 16:02:05,714 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/index.html
+2017-12-15 16:02:05,715 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.technology.angularspring.AngularSpringRepositoryTecnology : visitDomainModelElement
+2017-12-15 16:02:05,716 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityControllerJs entity.controller.js.ftl
+2017-12-15 16:02:05,759 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.controller.js
+2017-12-15 16:02:05,760 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDeleteDialogControllerJs entity-delete-dialog.controller.js.ftl
+2017-12-15 16:02:05,761 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-delete-dialog.controller.js
+2017-12-15 16:02:05,761 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDeleteDialogHtml entity-delete-dialog.html.ftl
+2017-12-15 16:02:05,763 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-delete-dialog.html
+2017-12-15 16:02:05,763 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDetailControllerJs entity-detail.controller.js.ftl
+2017-12-15 16:02:05,765 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-detail.controller.js
+2017-12-15 16:02:05,766 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDetailHtml entity-detail.html.ftl
+2017-12-15 16:02:05,771 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-detail.html
+2017-12-15 16:02:05,789 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDialogControllerJs entity-dialog.controller.js.ftl
+2017-12-15 16:02:05,793 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-dialog.controller.js
+2017-12-15 16:02:05,794 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDialogHtml entity-detail.html.ftl
+2017-12-15 16:02:05,797 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-dialog.html
+2017-12-15 16:02:05,821 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityHtml entity.html.ftl
+2017-12-15 16:02:05,827 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccions.html
+2017-12-15 16:02:05,828 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntitySearchServiceJs entity.search.service.js.ftl
+2017-12-15 16:02:05,830 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.search.service.js
+2017-12-15 16:02:05,830 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityServiceJs entity.service.js.ftl
+2017-12-15 16:02:05,833 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.service.js
+2017-12-15 16:02:05,834 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityStateJs entity.state.js.ftl
+2017-12-15 16:02:05,839 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.state.js
+2017-12-15 16:02:05,840 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillIdiomaEsJs entity.json.ftl
+2017-12-15 16:02:05,842 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/direccion.json
+2017-12-15 16:02:05,842 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillIdiomaEnJs entity.json.ftl
+2017-12-15 16:02:05,879 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/direccion.json
+2017-12-15 16:02:05,880 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.web.RestResourceLayerTask : visitDomainModelElement mx.infotec.dads.mongo 
+2017-12-15 16:02:05,887 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/web/rest/DireccionResource.java
+2017-12-15 16:02:05,892 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.domain.DomainLayerServiceImpl : visitDomainModelElement for mx.infotec.dads.mongo
+2017-12-15 16:02:05,898 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/domain/Direccion.java
+2017-12-15 16:02:05,902 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.service.SpringServiceLayerServiceImpl : visitDomainModelElement: mx.infotec.dads.mongo 
+2017-12-15 16:02:05,905 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/DireccionService.java
+2017-12-15 16:02:05,908 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/impl/DireccionServiceImpl.java
+2017-12-15 16:02:05,908 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.repository.RepositoryLayerServiceImpl : repositoryLayerTask for dommain
+2017-12-15 16:02:05,910 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/repository/DireccionRepository.java
+2017-12-15 16:02:05,911 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.controller.js
+2017-12-15 16:02:05,912 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-delete-dialog.controller.js
+2017-12-15 16:02:05,912 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-delete-dialog.html
+2017-12-15 16:02:05,912 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-detail.controller.js
+2017-12-15 16:02:05,913 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-detail.html
+2017-12-15 16:02:05,913 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-dialog.controller.js
+2017-12-15 16:02:05,913 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-dialog.html
+2017-12-15 16:02:05,914 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccions.html
+2017-12-15 16:02:05,915 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.search.service.js
+2017-12-15 16:02:05,915 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.service.js
+2017-12-15 16:02:05,915 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.state.js
+2017-12-15 16:02:05,916 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/direccion.json
+2017-12-15 16:02:05,916 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/direccion.json
+2017-12-15 16:02:05,916 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/web/rest/DireccionResource.java
+2017-12-15 16:02:05,917 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/domain/Direccion.java
+2017-12-15 16:02:05,918 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/DireccionService.java
+2017-12-15 16:02:05,918 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/impl/DireccionServiceImpl.java
+2017-12-15 16:02:05,919 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/repository/DireccionRepository.java
+2017-12-15 16:02:05,919 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/layouts/navbar/navbar.html
+2017-12-15 16:02:05,920 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/global.json
+2017-12-15 16:02:05,921 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/global.json
+2017-12-15 16:02:05,921 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/index.html
+2017-12-15 16:28:27,308 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 27161 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 16:28:27,309 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 16:28:27,309 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 16:28:28,993 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@5a54c128
+2017-12-15 16:28:29,796 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.config.DatabaseConfiguration : Configuring Mongobee
+2017-12-15 16:28:29,893 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee aqcuired process lock, starting the data migration sequence..
+2017-12-15 16:28:30,096 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
+2017-12-15 16:28:30,096 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
+2017-12-15 16:28:30,098 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.
+2017-12-15 16:29:24,953 WARN  [Thread-5] de.flapdoodle.embed.mongo.runtime.Mongod : sendShutdown /127.0.0.1:27117
+java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at de.flapdoodle.embed.mongo.runtime.Mongod.sendShutdown(Mongod.java:86)
+	at de.flapdoodle.embed.mongo.AbstractMongoProcess.sendStopToMongoInstance(AbstractMongoProcess.java:133)
+	at de.flapdoodle.embed.mongo.AbstractMongoProcess.stopInternal(AbstractMongoProcess.java:107)
+	at de.flapdoodle.embed.process.runtime.AbstractProcess.stop(AbstractProcess.java:170)
+	at de.flapdoodle.embed.process.runtime.Executable.stop(Executable.java:73)
+	at de.flapdoodle.embed.process.runtime.Executable$JobKiller.run(Executable.java:90)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-15 16:29:25,053 WARN  [Thread-5] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod with db command, try next
+2017-12-15 16:29:25,066 INFO  [Thread-5] de.flapdoodle.embed.process.runtime.ProcessControl : execSuccess: false [kill, -2, 27192]
+2017-12-15 16:29:25,066 WARN  [Thread-5] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod, try next
+2017-12-15 16:29:25,067 WARN  [Thread-5] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod the second time, try one last thing
+2017-12-15 16:29:29,560 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 27354 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 16:29:29,561 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 16:29:29,561 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 16:29:31,251 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@5a54c128
+2017-12-15 16:29:32,095 WARN  [restartedMain] org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'parameterValidationExceptionResultHandler': Unsatisfied dependency expressed through field 'parameterResolvers'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'standardParameterResolver': Unsatisfied dependency expressed through method 'setValueProviders' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commandValueProvider' defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]: Unsatisfied dependency expressed through method 'commandValueProvider' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'shell': Invocation of init method failed; nested exception is org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+2017-12-15 16:29:32,226 ERROR [restartedMain] org.springframework.boot.SpringApplication : Application startup failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'parameterValidationExceptionResultHandler': Unsatisfied dependency expressed through field 'parameterResolvers'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'standardParameterResolver': Unsatisfied dependency expressed through method 'setValueProviders' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commandValueProvider' defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]: Unsatisfied dependency expressed through method 'commandValueProvider' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'shell': Invocation of init method failed; nested exception is org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:588)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1264)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:553)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at mx.infotec.dads.kukulkan.shell.KukulkanShellApplication.main(KukulkanShellApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'standardParameterResolver': Unsatisfied dependency expressed through method 'setValueProviders' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commandValueProvider' defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]: Unsatisfied dependency expressed through method 'commandValueProvider' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'shell': Invocation of init method failed; nested exception is org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:667)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1264)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:553)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1316)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1282)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1180)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:585)
+	... 24 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commandValueProvider' defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]: Unsatisfied dependency expressed through method 'commandValueProvider' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'shell': Invocation of init method failed; nested exception is org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:749)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1316)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1282)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1180)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:659)
+	... 40 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'shell': Invocation of init method failed; nested exception is org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:137)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:409)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
+	... 56 common frames omitted
+Caused by: org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+	at org.springframework.shell.Shell.lambda$null$3(Shell.java:313)
+	at java.util.Optional.orElseThrow(Optional.java:290)
+	at org.springframework.shell.Shell.lambda$validateParameterResolvers$4(Shell.java:313)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.util.stream.IntPipeline$4$1.accept(IntPipeline.java:250)
+	at java.util.stream.Streams$RangeIntSpliterator.forEachRemaining(Streams.java:110)
+	at java.util.Spliterator$OfInt.forEachRemaining(Spliterator.java:693)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:418)
+	at org.springframework.shell.Shell.validateParameterResolvers(Shell.java:309)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.shell.Shell.gatherMethodTargets(Shell.java:103)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:366)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:311)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:134)
+	... 69 common frames omitted
+2017-12-15 16:29:36,510 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 27447 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 16:29:36,511 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 16:29:36,511 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 16:29:38,254 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@5bcb6735
+2017-12-15 16:29:39,194 WARN  [restartedMain] org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'parameterValidationExceptionResultHandler': Unsatisfied dependency expressed through field 'parameterResolvers'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'standardParameterResolver': Unsatisfied dependency expressed through method 'setValueProviders' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commandValueProvider' defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]: Unsatisfied dependency expressed through method 'commandValueProvider' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'shell': Invocation of init method failed; nested exception is org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+2017-12-15 16:29:39,330 ERROR [restartedMain] org.springframework.boot.SpringApplication : Application startup failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'parameterValidationExceptionResultHandler': Unsatisfied dependency expressed through field 'parameterResolvers'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'standardParameterResolver': Unsatisfied dependency expressed through method 'setValueProviders' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commandValueProvider' defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]: Unsatisfied dependency expressed through method 'commandValueProvider' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'shell': Invocation of init method failed; nested exception is org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:588)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1264)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:553)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at mx.infotec.dads.kukulkan.shell.KukulkanShellApplication.main(KukulkanShellApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'standardParameterResolver': Unsatisfied dependency expressed through method 'setValueProviders' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commandValueProvider' defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]: Unsatisfied dependency expressed through method 'commandValueProvider' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'shell': Invocation of init method failed; nested exception is org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:667)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1264)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:553)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1316)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1282)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1180)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:585)
+	... 24 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commandValueProvider' defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]: Unsatisfied dependency expressed through method 'commandValueProvider' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'shell': Invocation of init method failed; nested exception is org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:749)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1316)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1282)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1180)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:659)
+	... 40 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'shell': Invocation of init method failed; nested exception is org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:137)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:409)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
+	... 56 common frames omitted
+Caused by: org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+	at org.springframework.shell.Shell.lambda$null$3(Shell.java:313)
+	at java.util.Optional.orElseThrow(Optional.java:290)
+	at org.springframework.shell.Shell.lambda$validateParameterResolvers$4(Shell.java:313)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.util.stream.IntPipeline$4$1.accept(IntPipeline.java:250)
+	at java.util.stream.Streams$RangeIntSpliterator.forEachRemaining(Streams.java:110)
+	at java.util.Spliterator$OfInt.forEachRemaining(Spliterator.java:693)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:418)
+	at org.springframework.shell.Shell.validateParameterResolvers(Shell.java:309)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.shell.Shell.gatherMethodTargets(Shell.java:103)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:366)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:311)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:134)
+	... 69 common frames omitted
+2017-12-15 16:31:03,880 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 27602 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 16:31:03,880 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 16:31:03,880 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 16:31:05,663 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@77194860
+2017-12-15 16:31:06,577 WARN  [restartedMain] org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'parameterValidationExceptionResultHandler': Unsatisfied dependency expressed through field 'parameterResolvers'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'standardParameterResolver': Unsatisfied dependency expressed through method 'setValueProviders' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commandValueProvider' defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]: Unsatisfied dependency expressed through method 'commandValueProvider' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'shell': Invocation of init method failed; nested exception is org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+2017-12-15 16:31:06,714 ERROR [restartedMain] org.springframework.boot.SpringApplication : Application startup failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'parameterValidationExceptionResultHandler': Unsatisfied dependency expressed through field 'parameterResolvers'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'standardParameterResolver': Unsatisfied dependency expressed through method 'setValueProviders' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commandValueProvider' defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]: Unsatisfied dependency expressed through method 'commandValueProvider' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'shell': Invocation of init method failed; nested exception is org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:588)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1264)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:553)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at mx.infotec.dads.kukulkan.shell.KukulkanShellApplication.main(KukulkanShellApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'standardParameterResolver': Unsatisfied dependency expressed through method 'setValueProviders' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commandValueProvider' defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]: Unsatisfied dependency expressed through method 'commandValueProvider' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'shell': Invocation of init method failed; nested exception is org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:667)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1264)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:553)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1316)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1282)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1180)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:585)
+	... 24 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'commandValueProvider' defined in class path resource [org/springframework/shell/standard/StandardAPIAutoConfiguration.class]: Unsatisfied dependency expressed through method 'commandValueProvider' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'shell': Invocation of init method failed; nested exception is org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:749)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1316)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1282)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1180)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:659)
+	... 40 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'shell': Invocation of init method failed; nested exception is org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:137)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:409)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
+	... 56 common frames omitted
+Caused by: org.springframework.shell.ParameterResolverMissingException: No parameter resolver found for parameter with index 0 (named 'file') of public java.lang.String mx.infotec.dads.kukulkan.shell.commands.KukulkanGeneration.createApp(java.io.File) throws java.io.IOException 
+	at org.springframework.shell.Shell.lambda$null$3(Shell.java:313)
+	at java.util.Optional.orElseThrow(Optional.java:290)
+	at org.springframework.shell.Shell.lambda$validateParameterResolvers$4(Shell.java:313)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.util.stream.IntPipeline$4$1.accept(IntPipeline.java:250)
+	at java.util.stream.Streams$RangeIntSpliterator.forEachRemaining(Streams.java:110)
+	at java.util.Spliterator$OfInt.forEachRemaining(Spliterator.java:693)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:418)
+	at org.springframework.shell.Shell.validateParameterResolvers(Shell.java:309)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.shell.Shell.gatherMethodTargets(Shell.java:103)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:366)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:311)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:134)
+	... 69 common frames omitted
+2017-12-15 16:31:27,098 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 27716 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 16:31:27,098 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 16:31:27,098 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 16:31:28,773 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@5a54c128
+2017-12-15 16:31:29,621 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.config.DatabaseConfiguration : Configuring Mongobee
+2017-12-15 16:31:29,718 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee aqcuired process lock, starting the data migration sequence..
+2017-12-15 16:31:29,901 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
+2017-12-15 16:31:29,901 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
+2017-12-15 16:31:29,903 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.
+2017-12-15 16:36:49,843 WARN  [Thread-5] de.flapdoodle.embed.mongo.runtime.Mongod : sendShutdown /127.0.0.1:27117
+java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at de.flapdoodle.embed.mongo.runtime.Mongod.sendShutdown(Mongod.java:86)
+	at de.flapdoodle.embed.mongo.AbstractMongoProcess.sendStopToMongoInstance(AbstractMongoProcess.java:133)
+	at de.flapdoodle.embed.mongo.AbstractMongoProcess.stopInternal(AbstractMongoProcess.java:107)
+	at de.flapdoodle.embed.process.runtime.AbstractProcess.stop(AbstractProcess.java:170)
+	at de.flapdoodle.embed.process.runtime.Executable.stop(Executable.java:73)
+	at de.flapdoodle.embed.process.runtime.Executable$JobKiller.run(Executable.java:90)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-15 16:36:49,943 WARN  [Thread-5] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod with db command, try next
+2017-12-15 16:36:49,956 INFO  [Thread-5] de.flapdoodle.embed.process.runtime.ProcessControl : execSuccess: false [kill, -2, 27747]
+2017-12-15 16:36:49,957 WARN  [Thread-5] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod, try next
+2017-12-15 16:36:49,957 WARN  [Thread-5] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod the second time, try one last thing
+2017-12-15 16:36:49,982 ERROR [restartedMain] org.springframework.boot.SpringApplication : Application startup failed
+java.lang.IllegalStateException: Failed to execute ApplicationRunner
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:726)
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:713)
+	at org.springframework.boot.SpringApplication.afterRefresh(SpringApplication.java:703)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at mx.infotec.dads.kukulkan.shell.KukulkanShellApplication.main(KukulkanShellApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.beans.factory.BeanCreationNotAllowedException: Error creating bean with name 'terminal': Singleton bean creation not allowed while singletons of this factory are in destruction (Do not request a bean from a BeanFactory in a destroy method implementation!)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:216)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.context.annotation.ContextAnnotationAutowireCandidateResolver$1.getTarget(ContextAnnotationAutowireCandidateResolver.java:88)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:192)
+	at com.sun.proxy.$Proxy75.writer(Unknown Source)
+	at org.springframework.shell.result.ThrowableResultHandler.doHandleResult(ThrowableResultHandler.java:50)
+	at org.springframework.shell.result.ThrowableResultHandler.doHandleResult(ThrowableResultHandler.java:34)
+	at org.springframework.shell.result.TerminalAwareResultHandler.handleResult(TerminalAwareResultHandler.java:40)
+	at org.springframework.shell.result.TypeHierarchyResultHandler.handleResult(TypeHierarchyResultHandler.java:55)
+	at org.springframework.shell.Shell.run(Shell.java:127)
+	at org.springframework.shell.jline.DefaultShellApplicationRunner.run(DefaultShellApplicationRunner.java:80)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:723)
+	... 11 common frames omitted
+2017-12-15 16:36:54,934 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 28068 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 16:36:54,935 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 16:36:54,935 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 16:36:56,660 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@5a54c128
+2017-12-15 16:36:57,488 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.config.DatabaseConfiguration : Configuring Mongobee
+2017-12-15 16:36:57,585 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee aqcuired process lock, starting the data migration sequence..
+2017-12-15 16:36:57,792 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
+2017-12-15 16:36:57,792 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
+2017-12-15 16:36:57,795 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.
+2017-12-15 16:37:28,425 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.grammar.GrammarUtil : Interpreting file /home/daniel/git/kukulkan-shell/k
+2017-12-15 16:46:48,806 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 28068 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 16:46:48,806 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 16:46:48,806 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 16:46:49,403 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@7e8ee263
+2017-12-15 16:46:49,554 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.config.DatabaseConfiguration : Configuring Mongobee
+2017-12-15 16:46:49,608 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee aqcuired process lock, starting the data migration sequence..
+2017-12-15 16:46:49,700 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
+2017-12-15 16:46:49,700 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
+2017-12-15 16:46:49,701 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.
+2017-12-15 16:48:52,901 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 28774 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 16:48:52,901 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 16:48:52,902 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 16:48:54,696 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@3849cb63
+2017-12-15 16:48:55,636 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.config.DatabaseConfiguration : Configuring Mongobee
+2017-12-15 16:48:55,735 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee aqcuired process lock, starting the data migration sequence..
+2017-12-15 16:48:55,944 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
+2017-12-15 16:48:55,944 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
+2017-12-15 16:48:55,946 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.
+2017-12-15 17:53:25,152 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 31401 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 17:53:25,152 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 17:53:25,152 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 17:53:27,021 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@3849cb63
+2017-12-15 17:53:27,937 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.config.DatabaseConfiguration : Configuring Mongobee
+2017-12-15 17:53:28,045 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee aqcuired process lock, starting the data migration sequence..
+2017-12-15 17:53:28,262 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
+2017-12-15 17:53:28,262 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
+2017-12-15 17:53:28,265 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.
+2017-12-15 17:55:57,591 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 31735 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 17:55:57,592 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 17:55:57,592 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 17:55:59,356 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@5b42ddd4
+2017-12-15 17:56:00,172 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.config.DatabaseConfiguration : Configuring Mongobee
+2017-12-15 17:56:00,272 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee aqcuired process lock, starting the data migration sequence..
+2017-12-15 17:56:00,475 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
+2017-12-15 17:56:00,475 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
+2017-12-15 17:56:00,478 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.
+2017-12-15 17:56:03,632 INFO  [restartedMain] org.jline : Error while finding completion candidates
+java.util.regex.PatternSyntaxException: Dangling meta character '*' near index 0
+*.3k
+^
+	at java.util.regex.Pattern.error(Pattern.java:1955)
+	at java.util.regex.Pattern.sequence(Pattern.java:2123)
+	at java.util.regex.Pattern.expr(Pattern.java:1996)
+	at java.util.regex.Pattern.compile(Pattern.java:1696)
+	at java.util.regex.Pattern.<init>(Pattern.java:1351)
+	at java.util.regex.Pattern.compile(Pattern.java:1028)
+	at java.util.regex.Pattern.matches(Pattern.java:1133)
+	at java.lang.String.matches(String.java:2121)
+	at mx.infotec.dads.kukulkan.shell.commands.valueprovided.KukulkanFilesProvider.lambda$complete$0(KukulkanFilesProvider.java:22)
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:174)
+	at java.util.Iterator.forEachRemaining(Iterator.java:116)
+	at java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1801)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:708)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:499)
+	at mx.infotec.dads.kukulkan.shell.commands.valueprovided.KukulkanFilesProvider.complete(KukulkanFilesProvider.java:23)
+	at org.springframework.shell.standard.StandardParameterResolver.lambda$valueCompletions$7(StandardParameterResolver.java:415)
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:175)
+	at java.util.Spliterators$IteratorSpliterator.tryAdvance(Spliterators.java:1812)
+	at java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:126)
+	at java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:498)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:485)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:152)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.findFirst(ReferencePipeline.java:464)
+	at org.springframework.shell.standard.StandardParameterResolver.valueCompletions(StandardParameterResolver.java:416)
+	at org.springframework.shell.standard.StandardParameterResolver.complete(StandardParameterResolver.java:385)
+	at org.springframework.shell.Shell.complete(Shell.java:238)
+	at org.springframework.shell.jline.JLineShellAutoConfiguration$CompleterAdapter.complete(JLineShellAutoConfiguration.java:202)
+	at org.jline.reader.impl.LineReaderImpl.doComplete(LineReaderImpl.java:3777)
+	at org.jline.reader.impl.LineReaderImpl.expandOrComplete(LineReaderImpl.java:3696)
+	at org.jline.reader.impl.LineReaderImpl.readLine(LineReaderImpl.java:548)
+	at org.jline.reader.impl.LineReaderImpl.readLine(LineReaderImpl.java:390)
+	at org.springframework.shell.jline.DefaultShellApplicationRunner$JLineInputProvider.readInput(DefaultShellApplicationRunner.java:105)
+	at org.springframework.shell.Shell.run(Shell.java:124)
+	at org.springframework.shell.jline.DefaultShellApplicationRunner.run(DefaultShellApplicationRunner.java:80)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:723)
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:713)
+	at org.springframework.boot.SpringApplication.afterRefresh(SpringApplication.java:703)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at mx.infotec.dads.kukulkan.shell.KukulkanShellApplication.main(KukulkanShellApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+2017-12-15 17:57:44,752 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 32031 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 17:57:44,753 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 17:57:44,753 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 17:57:46,510 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@4a5290a9
+2017-12-15 17:57:47,429 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.config.DatabaseConfiguration : Configuring Mongobee
+2017-12-15 17:57:47,542 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee aqcuired process lock, starting the data migration sequence..
+2017-12-15 17:57:47,761 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
+2017-12-15 17:57:47,762 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
+2017-12-15 17:57:47,764 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.
+2017-12-15 17:58:01,352 WARN  [Thread-6] de.flapdoodle.embed.mongo.runtime.Mongod : sendShutdown /127.0.0.1:27117
+java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at de.flapdoodle.embed.mongo.runtime.Mongod.sendShutdown(Mongod.java:86)
+	at de.flapdoodle.embed.mongo.AbstractMongoProcess.sendStopToMongoInstance(AbstractMongoProcess.java:133)
+	at de.flapdoodle.embed.mongo.AbstractMongoProcess.stopInternal(AbstractMongoProcess.java:107)
+	at de.flapdoodle.embed.process.runtime.AbstractProcess.stop(AbstractProcess.java:170)
+	at de.flapdoodle.embed.process.runtime.AbstractProcess$JobKiller.run(AbstractProcess.java:243)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-15 17:58:01,453 WARN  [Thread-6] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod with db command, try next
+2017-12-15 17:58:01,465 INFO  [Thread-6] de.flapdoodle.embed.process.runtime.ProcessControl : execSuccess: false [kill, -2, 32063]
+2017-12-15 17:58:01,466 WARN  [Thread-6] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod, try next
+2017-12-15 17:58:01,466 WARN  [Thread-6] de.flapdoodle.embed.mongo.AbstractMongoProcess : could not stop mongod the second time, try one last thing
+2017-12-15 17:58:17,654 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 32172 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 17:58:17,655 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 17:58:17,655 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 17:58:19,661 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@3849cb63
+2017-12-15 17:58:20,757 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.config.DatabaseConfiguration : Configuring Mongobee
+2017-12-15 17:58:20,870 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee aqcuired process lock, starting the data migration sequence..
+2017-12-15 17:58:21,079 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
+2017-12-15 17:58:21,079 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
+2017-12-15 17:58:21,082 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.
+2017-12-15 18:17:05,101 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.grammar.GrammarUtil : Interpreting file /home/daniel/git/kukulkan-shell/test.3k
+2017-12-15 18:17:05,164 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.util.SchemaPropertiesParser : Parsing the column Direccion
+2017-12-15 18:17:05,165 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.util.SchemaPropertiesParser : Trim the value direccion
+2017-12-15 18:17:05,172 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.technology.angularspring.AngularSpringRepositoryTecnology : doBeforeProcessDataModelGroup
+2017-12-15 18:17:05,238 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/layouts/navbar/navbar.html
+2017-12-15 18:17:05,260 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/global.json
+2017-12-15 18:17:05,264 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/global.json
+2017-12-15 18:17:05,272 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/index.html
+2017-12-15 18:17:05,273 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.technology.angularspring.AngularSpringRepositoryTecnology : visitDomainModelElement
+2017-12-15 18:17:05,273 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityControllerJs entity.controller.js.ftl
+2017-12-15 18:17:05,312 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.controller.js
+2017-12-15 18:17:05,312 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDeleteDialogControllerJs entity-delete-dialog.controller.js.ftl
+2017-12-15 18:17:05,314 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-delete-dialog.controller.js
+2017-12-15 18:17:05,314 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDeleteDialogHtml entity-delete-dialog.html.ftl
+2017-12-15 18:17:05,316 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-delete-dialog.html
+2017-12-15 18:17:05,316 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDetailControllerJs entity-detail.controller.js.ftl
+2017-12-15 18:17:05,318 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-detail.controller.js
+2017-12-15 18:17:05,318 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDetailHtml entity-detail.html.ftl
+2017-12-15 18:17:05,344 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-detail.html
+2017-12-15 18:17:05,359 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDialogControllerJs entity-dialog.controller.js.ftl
+2017-12-15 18:17:05,362 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-dialog.controller.js
+2017-12-15 18:17:05,363 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityDialogHtml entity-detail.html.ftl
+2017-12-15 18:17:05,366 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-dialog.html
+2017-12-15 18:17:05,385 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityHtml entity.html.ftl
+2017-12-15 18:17:05,391 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccions.html
+2017-12-15 18:17:05,392 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntitySearchServiceJs entity.search.service.js.ftl
+2017-12-15 18:17:05,393 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.search.service.js
+2017-12-15 18:17:05,394 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityServiceJs entity.service.js.ftl
+2017-12-15 18:17:05,396 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.service.js
+2017-12-15 18:17:05,397 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillEntityStateJs entity.state.js.ftl
+2017-12-15 18:17:05,400 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.state.js
+2017-12-15 18:17:05,401 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillIdiomaEsJs entity.json.ftl
+2017-12-15 18:17:05,402 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/direccion.json
+2017-12-15 18:17:05,402 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl : fillIdiomaEnJs entity.json.ftl
+2017-12-15 18:17:05,404 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/direccion.json
+2017-12-15 18:17:05,404 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.web.RestResourceLayerTask : visitDomainModelElement mx.infotec.dads.mongo 
+2017-12-15 18:17:05,409 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/web/rest/DireccionResource.java
+2017-12-15 18:17:05,413 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.domain.DomainLayerServiceImpl : visitDomainModelElement for mx.infotec.dads.mongo
+2017-12-15 18:17:05,417 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/domain/Direccion.java
+2017-12-15 18:17:05,420 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.service.SpringServiceLayerServiceImpl : visitDomainModelElement: mx.infotec.dads.mongo 
+2017-12-15 18:17:05,422 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/DireccionService.java
+2017-12-15 18:17:05,425 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/impl/DireccionServiceImpl.java
+2017-12-15 18:17:05,425 DEBUG [restartedMain] mx.infotec.dads.kukulkan.engine.service.layers.repository.RepositoryLayerServiceImpl : repositoryLayerTask for dommain
+2017-12-15 18:17:05,428 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.templating.service.TemplateServiceImpl : Generating to: /home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/repository/DireccionRepository.java
+2017-12-15 18:17:05,429 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.controller.js
+2017-12-15 18:17:05,430 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-delete-dialog.controller.js
+2017-12-15 18:17:05,430 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-delete-dialog.html
+2017-12-15 18:17:05,430 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-detail.controller.js
+2017-12-15 18:17:05,430 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-detail.html
+2017-12-15 18:17:05,431 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-dialog.controller.js
+2017-12-15 18:17:05,431 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion-dialog.html
+2017-12-15 18:17:05,431 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccions.html
+2017-12-15 18:17:05,431 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.search.service.js
+2017-12-15 18:17:05,431 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.service.js
+2017-12-15 18:17:05,432 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/entities/direccion/direccion.state.js
+2017-12-15 18:17:05,432 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/direccion.json
+2017-12-15 18:17:05,432 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/direccion.json
+2017-12-15 18:17:05,432 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/web/rest/DireccionResource.java
+2017-12-15 18:17:05,432 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/domain/Direccion.java
+2017-12-15 18:17:05,433 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/DireccionService.java
+2017-12-15 18:17:05,433 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/service/impl/DireccionServiceImpl.java
+2017-12-15 18:17:05,433 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/java/mx/infotec/dads/mongo/repository/DireccionRepository.java
+2017-12-15 18:17:05,433 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/app/layouts/navbar/navbar.html
+2017-12-15 18:17:05,434 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/es/global.json
+2017-12-15 18:17:05,434 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/i18n/en/global.json
+2017-12-15 18:17:05,434 INFO  [restartedMain] mx.infotec.dads.kukulkan.engine.util.FileUtil : saveFile/home/daniel/git/kukulkanmongo/src/main/webapp/index.html
+2017-12-15 18:19:42,089 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Starting KukulkanShellApplication on daniel-infotec with PID 32172 (/home/daniel/git/kukulkan-shell/target/classes started by daniel in /home/daniel/git/kukulkan-shell)
+2017-12-15 18:19:42,090 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2017-12-15 18:19:42,090 INFO  [restartedMain] mx.infotec.dads.kukulkan.shell.KukulkanShellApplication : No active profile set, falling back to default profiles: default
+2017-12-15 18:19:42,655 INFO  [restartedMain] de.flapdoodle.embed.process.runtime.Executable : start de.flapdoodle.embed.mongo.config.MongodConfigBuilder$ImmutableMongodConfig@1593aacb
+2017-12-15 18:19:42,789 DEBUG [restartedMain] mx.infotec.dads.kukulkan.shell.config.DatabaseConfiguration : Configuring Mongobee
+2017-12-15 18:19:42,842 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee aqcuired process lock, starting the data migration sequence..
+2017-12-15 18:19:42,936 INFO  [restartedMain] com.github.mongobee.Mongobee : [ChangeSet: id=02-kukulkan, author=dcp, changeLogClass=mx.infotec.dads.kukulkan.engine.dbmigrations.CatalogSetupMigration, changeSetMethod=addDataStoreType] applied
+2017-12-15 18:19:42,936 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee is releasing process lock.
+2017-12-15 18:19:42,936 INFO  [restartedMain] com.github.mongobee.Mongobee : Mongobee has finished his job.

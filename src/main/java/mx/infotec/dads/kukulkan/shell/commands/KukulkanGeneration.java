@@ -1,11 +1,14 @@
 package mx.infotec.dads.kukulkan.shell.commands;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
+import org.springframework.shell.standard.ShellOption;
 
 import mx.infotec.dads.kukulkan.engine.domain.core.ArchetypeType;
 import mx.infotec.dads.kukulkan.engine.domain.core.DomainModel;
@@ -25,6 +28,7 @@ import mx.infotec.dads.kukulkan.engine.util.FileUtil;
 import mx.infotec.dads.kukulkan.engine.util.InflectorProcessor;
 import mx.infotec.dads.kukulkan.engine.util.KukulkanConfigurationProperties;
 import mx.infotec.dads.kukulkan.engine.util.PKGenerationStrategy;
+import mx.infotec.dads.kukulkan.shell.commands.valueprovided.KukulkanFilesProvider;
 import mx.infotec.dads.kukulkan.shell.util.Console;
 
 /**
@@ -52,40 +56,9 @@ public class KukulkanGeneration {
     public String outputdir() {
         return prop.getConfig().getOutputdir();
     }
-    
-    
-    @ShellMethod("Show the project properties")
-    public String showProjectProperties() {
-        ProjectConfiguration pConf = new ProjectConfiguration();
-        pConf.setId("kukulkanmongo");
-        pConf.setGroupId("mx.infotec.dads.mongo");
-        pConf.setVersion("1.0.0");
-        pConf.setPackaging("mx.infotec.dads.mongo");
-        pConf.setYear("2017");
-        pConf.setAuthor("KUKULKAN");
-        pConf.setWebLayerName("web.rest");
-        pConf.setServiceLayerName("service");
-        pConf.setDaoLayerName("repository");
-        pConf.setDomainLayerName("domain");
-        pConf.setMongoDb(true);
-        pConf.setGlobalGenerationType(PKGenerationStrategy.SEQUENCE);
-        Console.printf(pConf.getId());
-        Console.printf(pConf.getGroupId());
-        Console.printf(pConf.getVersion());
-        Console.printf(pConf.getPackaging());
-        Console.printf(pConf.getYear());
-        Console.printf(pConf.getAuthor());
-        Console.printf(pConf.getWebLayerName());
-        Console.printf(pConf.getServiceLayerName());
-        Console.printf(pConf.getDaoLayerName());
-        Console.printf(pConf.getDomainLayerName());
-        Console.printf(Boolean.toString(pConf.isMongoDb()));
-        Console.printf(pConf.getGlobalGenerationType().name());
-        return "";
-    }
-    
+
     @ShellMethod("Create an App")
-    public String createApp() {
+    public String createApp(@ShellOption(valueProvider= KukulkanFilesProvider.class) File file) throws IOException {
         Console.printf("Generating app");
         Rule rule = new Rule();
         RuleType ruleType = ruleTypeRepository.findAll().get(0);
@@ -118,7 +91,7 @@ public class KukulkanGeneration {
         KukulkanVisitor semanticAnalyzer = new KukulkanVisitor();
 
         // Mapping DataContext into DataModel
-        List<DomainModelGroup> dmgList = GrammarMapping.createSingleDataModelGroupList(semanticAnalyzer);
+        List<DomainModelGroup> dmgList = GrammarMapping.createSingleDataModelGroupList(semanticAnalyzer, file);
         dataModel.setDomainModelGroup(dmgList);
         // Create GeneratorContext
         GeneratorContext genCtx = new GeneratorContext(dataModel, pConf);
