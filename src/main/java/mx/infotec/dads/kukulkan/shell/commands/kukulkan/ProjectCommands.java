@@ -1,43 +1,19 @@
-package mx.infotec.dads.kukulkan.shell.commands;
+package mx.infotec.dads.kukulkan.shell.commands.kukulkan;
 
 import static mx.infotec.dads.kukulkan.shell.util.Console.printf;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-
 import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 
-import mx.infotec.dads.kukulkan.engine.domain.core.ArchetypeType;
-import mx.infotec.dads.kukulkan.engine.domain.core.DomainModel;
-import mx.infotec.dads.kukulkan.engine.domain.core.DomainModelGroup;
-import mx.infotec.dads.kukulkan.engine.domain.core.GeneratorContext;
-import mx.infotec.dads.kukulkan.engine.domain.core.JavaDomainModel;
 import mx.infotec.dads.kukulkan.engine.domain.core.ProjectConfiguration;
-import mx.infotec.dads.kukulkan.engine.domain.core.Rule;
-import mx.infotec.dads.kukulkan.engine.domain.core.RuleType;
-import mx.infotec.dads.kukulkan.engine.factories.LayerTaskFactory;
-import mx.infotec.dads.kukulkan.engine.grammar.GrammarMapping;
-import mx.infotec.dads.kukulkan.engine.grammar.KukulkanVisitor;
-import mx.infotec.dads.kukulkan.engine.repository.RuleRepository;
-import mx.infotec.dads.kukulkan.engine.repository.RuleTypeRepository;
-import mx.infotec.dads.kukulkan.engine.service.GenerationService;
-import mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl;
-import mx.infotec.dads.kukulkan.engine.util.FileUtil;
-import mx.infotec.dads.kukulkan.engine.util.InflectorProcessor;
-import mx.infotec.dads.kukulkan.engine.util.KukulkanConfigurationProperties;
 import mx.infotec.dads.kukulkan.engine.util.PKGenerationStrategy;
 import mx.infotec.dads.kukulkan.shell.commands.valueprovided.GenerationTypeProvider;
-import mx.infotec.dads.kukulkan.shell.commands.valueprovided.KukulkanFilesProvider;
-import mx.infotec.dads.kukulkan.shell.util.Console;
+import static mx.infotec.dads.kukulkan.shell.util.Constants.NULL;
 
 /**
  * Util Commands
@@ -47,8 +23,6 @@ import mx.infotec.dads.kukulkan.shell.util.Console;
  */
 @ShellComponent
 public class ProjectCommands {
-
-    private static final String NULL = "@NULL";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProjectCommands.class);
 
@@ -79,13 +53,19 @@ public class ProjectCommands {
     }
 
     @ShellMethod("set some property to the ProjectConfiguration Object")
-    public void projectSet(@ShellOption(defaultValue = NULL) String id, @ShellOption(defaultValue = NULL) String author,
-            @ShellOption(defaultValue = NULL) String daoLayer, @ShellOption(defaultValue = NULL) String domainLayer,
-            @ShellOption(defaultValue = NULL) String dtoLayer, @ShellOption(defaultValue = NULL) String exceptionLayer,
-            @ShellOption(defaultValue = "NULL" , valueProvider = GenerationTypeProvider.class) PKGenerationStrategy keyTypeGeneration,
-            @ShellOption(defaultValue = NULL) String groupId, @ShellOption(defaultValue = NULL) String packaging,
-            @ShellOption(defaultValue = NULL) String serviceLayer, @ShellOption(defaultValue = NULL) String version,
-            @ShellOption(defaultValue = NULL) String webLayer, @ShellOption(defaultValue = NULL) String year) {
+    public void projectSet(@ShellOption(defaultValue = NULL) String id, 
+            @ShellOption(defaultValue = NULL) String author,
+            @ShellOption(defaultValue = NULL) String daoLayer, 
+            @ShellOption(defaultValue = NULL) String domainLayer,
+            @ShellOption(defaultValue = NULL) String dtoLayer, 
+            @ShellOption(defaultValue = NULL) String exceptionLayer,
+            @ShellOption(defaultValue = NULL, valueProvider = GenerationTypeProvider.class) PKGenerationStrategy keyTypeGeneration,
+            @ShellOption(defaultValue = NULL) String groupId, 
+            @ShellOption(defaultValue = NULL) String packaging,
+            @ShellOption(defaultValue = NULL) String serviceLayer, 
+            @ShellOption(defaultValue = NULL) String version,
+            @ShellOption(defaultValue = NULL) String webLayer, 
+            @ShellOption(defaultValue = NULL) String year) {
         if (!NULL.equals(id)) {
             printf("set [ID] to ", id);
             pConf.setId(id);

@@ -1,4 +1,4 @@
-package mx.infotec.dads.kukulkan.shell.commands;
+package mx.infotec.dads.kukulkan.shell.commands.kukulkan;
 
 import static mx.infotec.dads.kukulkan.shell.util.Console.printf;
 
