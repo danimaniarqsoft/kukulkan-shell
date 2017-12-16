@@ -14,8 +14,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class KukulkanPrompt implements PromptProvider {
 
-	@Override
-	public AttributedString getPrompt() {
-		return new AttributedString("kukulkan >", AttributedStyle.DEFAULT.foreground(AttributedStyle.YELLOW));
-	}
+    @Override
+    public AttributedString getPrompt() {
+        return new AttributedString("kukulkan> ", AttributedStyle.DEFAULT.foreground(AttributedStyle.YELLOW));
+    }
 }

@@ -34,3 +34,30 @@
 1513383529385:
 1513383536491:help --command
 1513383540053:stacktrace
+1513383658166:help
+1513384428985:create-app --file test.3k
+1513385016417:project-configuration
+1513386494514:set-project-configuration --version 1.2.3
+1513387042818:set-project-configuration --dto-layer hola
+1513387047282:show-project-configuration
+1513387275887:project-show
+1513387516544:project-set-default-values
+1513387602133:project-show
+1513387619760:project-set --author victor hugo
+1513387628983:project-show
+1513387647639:project-set --author cristiano
+1513387880513:project-set --author daniel --dto-layer hola
+1513387898137:project-show
+1513387915322:project-set-default-values
+1513387921882:project-show
+1513388004121:project-set-default-values
+1513388476664:project-set --key-type-generation TABLE
+1513388633565:project-set --key-type-generation SEQUENCE
+1513388842249:project-set --key-type-generation IDENTITY
+1513388896209:project-set --key-type-generation AUTO
+1513388905248:project-set --key-type-generation SEQUENCE
+1513389139317:project-set --key-type-generation IDENTITY
+1513389149761:project-set --domain-layer domain
+1513389156407:project-show
+1513389262233:project-set --key-type-generation TABLE
+1513389267852:project-show
