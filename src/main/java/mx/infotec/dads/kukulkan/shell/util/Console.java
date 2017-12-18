@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import mx.infotec.dads.kukulkan.shell.domain.Line;
+
 /**
  * Useful methods to handle the main Console
  * 
@@ -31,13 +33,14 @@ public class Console {
     public static void exec(final String command, String... args) {
         exec(command, (s) -> {
             printf(s + "\n");
-            return Optional.ofNullable(s);
+            return Optional.ofNullable(new Line(s));
         }, args);
     }
 
-    public static List<String> exec(final String command, LineProcessor processor, String... args) {
-        List<String> lines = new ArrayList<>();
+    public static List<Line> exec(final String command, LineProcessor processor, String... args) {
+        List<Line> lines = new ArrayList<>();
         try {
+            printf(command + formatArgs(args));
             Process p = Runtime.getRuntime().exec(command + formatArgs(args));
             BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line = "";

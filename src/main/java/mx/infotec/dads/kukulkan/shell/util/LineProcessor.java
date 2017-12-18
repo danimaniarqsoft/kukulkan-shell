@@ -2,6 +2,8 @@ package mx.infotec.dads.kukulkan.shell.util;
 
 import java.util.Optional;
 
+import mx.infotec.dads.kukulkan.shell.domain.Line;
+
 /**
  * LineProcessor
  * 
@@ -16,5 +18,5 @@ public interface LineProcessor {
      * @param line
      * @return
      */
-    Optional<String> process(String line);
+    Optional<Line> process(String line);
 }

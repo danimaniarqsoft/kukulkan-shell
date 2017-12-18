@@ -7,13 +7,12 @@ package mx.infotec.dads.kukulkan.shell.util;
  *
  */
 public class Constants {
-    
+
     public static final String NULL = "@NULL";
 
-    private Constants(){
-        
+    public static final String DOCKER_COMMAND = "docker";
+
+    private Constants() {
+
     }
-    
-
-
 }
