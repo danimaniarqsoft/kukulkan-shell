@@ -21,7 +21,7 @@ public class KukulkanPrompt implements PromptProvider {
     @Autowired
     private Navigator nav;
 
-    private AttributedString prompt = new AttributedString("kukulkan> \n> ",
+    private AttributedString prompt = new AttributedString("kukulkan> ",
             AttributedStyle.DEFAULT.foreground(AttributedStyle.YELLOW));
 
     @Override
@@ -31,7 +31,7 @@ public class KukulkanPrompt implements PromptProvider {
 
     @EventListener
     public void handle(LocationUpdatedEvent event) {
-        prompt = new AttributedString("kukulkan >" + nav.getCurrentPath().toFile().getAbsolutePath(),
-                AttributedStyle.DEFAULT.foreground(AttributedStyle.YELLOW));
+        prompt = AttributedString.join(new AttributedString(">"), prompt,
+                new AttributedString("home/daniel", AttributedStyle.DEFAULT.foreground(AttributedStyle.YELLOW)));
     }
 }
