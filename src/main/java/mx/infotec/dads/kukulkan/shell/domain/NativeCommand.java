@@ -6,68 +6,62 @@ package mx.infotec.dads.kukulkan.shell.domain;
  * @author Daniel Cortes Pichardo
  *
  */
-public class NativeCommand {
+public interface NativeCommand extends Comparable<NativeCommand> {
 
-    private String errorMessage;
-    private String infoMessage;
-    private boolean isActive;
-    private NativeCommandType nativeCommandType;
+    /**
+     * Return the command to be executed
+     * 
+     * @return the command
+     */
+    public String getCommand();
 
-    public NativeCommand(NativeCommandType nct) {
-        this.nativeCommandType= nct;
-    }
+    /**
+     * Return the command used for test if the command is presented, In the test
+     * process when the testCommand is used, it must return true if the command
+     * is installed in the current machine, false otherwise.
+     * 
+     * @return
+     */
+    public String getTestCommand();
 
-    public String getInfoMessage() {
-        return infoMessage;
-    }
+    /**
+     * Get a useful info message to show in the console
+     * 
+     * @return
+     */
+    public String getInfoMessage();
 
-    public void setInfoMessage(String infoMessage) {
-        this.infoMessage = infoMessage;
-    }
+    /**
+     * Get a useful info message to show in the console
+     * 
+     * @return
+     */
+    public void setInfoMessage(String message);
 
-    public String getErrorMessage() {
-        return errorMessage;
-    }
+    /**
+     * Return a message if the command is not installed
+     * 
+     * @return
+     */
+    public String getErrorMessage();
 
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
+    /**
+     * Return a message if the command is not installed
+     * 
+     * @return
+     */
+    public void setErrorMessage(String message);
 
-    public boolean isActive() {
-        return isActive;
-    }
+    /**
+     * Return true if the command is installed, false otherwise
+     * 
+     * @return boolean
+     */
+    public boolean isActive();
 
-    public void setActive(boolean isActive) {
-        this.isActive = isActive;
-    }
-
-    public NativeCommandType getNativeCommandType() {
-        return nativeCommandType;
-    }
-
-    public void setNativeCommandType(NativeCommandType nativeCommandType) {
-        this.nativeCommandType = nativeCommandType;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((nativeCommandType == null) ? 0 : nativeCommandType.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        NativeCommand other = (NativeCommand) obj;
-        if (nativeCommandType != other.nativeCommandType)
-            return false;
-        return true;
-    }
+    /**
+     * Set true if the command is installed in the machine, false otherwise.
+     *
+     */
+    public void setActive(boolean active);
 }

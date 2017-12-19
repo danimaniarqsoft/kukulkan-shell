@@ -10,8 +10,6 @@ public class Constants {
 
     public static final String NULL = "@NULL";
 
-    public static final String DOCKER_COMMAND = "docker";
-
     public static final String GIT = "git";
 
     private Constants() {

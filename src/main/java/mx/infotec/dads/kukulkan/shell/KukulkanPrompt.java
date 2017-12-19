@@ -1,9 +1,5 @@
 package mx.infotec.dads.kukulkan.shell;
 
-import static mx.infotec.dads.kukulkan.shell.util.Constants.GIT;
-import java.util.List;
-import java.util.Optional;
-
 import javax.annotation.PostConstruct;
 
 import org.jline.utils.AttributedString;
@@ -14,10 +10,8 @@ import org.springframework.shell.jline.PromptProvider;
 import org.springframework.stereotype.Component;
 
 import mx.infotec.dads.kukulkan.shell.commands.publishers.LocationUpdatedEvent;
-import mx.infotec.dads.kukulkan.shell.domain.Line;
 import mx.infotec.dads.kukulkan.shell.domain.Navigator;
-import mx.infotec.dads.kukulkan.shell.util.Console;
-import mx.infotec.dads.kukulkan.shell.util.FilesCommons;
+import mx.infotec.dads.kukulkan.shell.services.PromptService;
 
 /**
  * KukulkanPrompt Provided
@@ -31,20 +25,21 @@ public class KukulkanPrompt implements PromptProvider {
     @Autowired
     private Navigator nav;
 
+    @Autowired
+    private PromptService promptService;
+
     private AttributedString prompt = new AttributedString("kukulkan",
             AttributedStyle.BOLD.foreground(AttributedStyle.BLUE));
 
     private AttributedString basePrompt = new AttributedString("kukulkan",
             AttributedStyle.BOLD.foreground(AttributedStyle.BLUE));
 
-    private AttributedString dirPrompt = new AttributedString("");
-
     private AttributedString endPrompt = new AttributedString("> ",
             AttributedStyle.BOLD.foreground(AttributedStyle.BLUE));
 
     @PostConstruct
     private void init() {
-        configPrompt();
+        prompt = promptService.createPrompt(nav.getCurrentPath(), basePrompt, endPrompt);
     }
 
     @Override
@@ -54,21 +49,7 @@ public class KukulkanPrompt implements PromptProvider {
 
     @EventListener
     public void handle(LocationUpdatedEvent event) {
-        configPrompt();
+        prompt = promptService.createPrompt(nav.getCurrentPath(), basePrompt, endPrompt);
     }
 
-    private void configPrompt() {
-        if (FilesCommons.hasGitFiles(nav.getCurrentPath())) {
-            List<Line> result = Console.exec(nav.getCurrentPath(), GIT, (line) -> Optional.ofNullable(new Line(line)),
-                    "rev-parse --abbrev-ref HEAD");
-            dirPrompt = AttributedString.join(new AttributedString(""),
-                    new AttributedString(" @", AttributedStyle.BOLD.foreground(AttributedStyle.YELLOW)),
-                    new AttributedString("git/" + result.get(0).getText(),
-                            AttributedStyle.BOLD_OFF.foreground(AttributedStyle.YELLOW)));
-
-        } else {
-            dirPrompt = new AttributedString("");
-        }
-        prompt = AttributedString.join(new AttributedString(""), basePrompt, dirPrompt, endPrompt);
-    }
 }

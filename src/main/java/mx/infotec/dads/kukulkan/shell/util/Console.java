@@ -2,6 +2,7 @@ package mx.infotec.dads.kukulkan.shell.util;
 
 import static mx.infotec.dads.kukulkan.shell.util.AnsiConstants.ANSI_GREEN;
 import static mx.infotec.dads.kukulkan.shell.util.AnsiConstants.ANSI_RESET;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.nio.file.Path;
@@ -10,7 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import mx.infotec.dads.kukulkan.shell.domain.Line;
+import mx.infotec.dads.kukulkan.shell.domain.NativeCommand;
 
 /**
  * Useful methods to handle the main Console
@@ -19,6 +24,8 @@ import mx.infotec.dads.kukulkan.shell.domain.Line;
  *
  */
 public class Console {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(Console.class);
 
     private Console() {
 
@@ -32,15 +39,19 @@ public class Console {
         System.out.println(String.format(ANSI_GREEN + "[%-15s] -" + ANSI_RESET + "%-30s", key, message));
     }
 
-    public static void exec(final String command, String... args) {
-        exec(Paths.get("."), command, (s) -> {
-            printf(s + "\n");
-            return Optional.ofNullable(new Line(s));
-        }, args);
+    public static List<Line> exec(final String command) {
+        return exec(command, new String[1]);
     }
 
     public static List<Line> exec(final String command, LineProcessor processor, String... args) {
         return exec(Paths.get("."), command, processor, args);
+    }
+
+    public static List<Line> exec(final String command, String... args) {
+        return exec(Paths.get("."), command, line -> {
+            printf(line + "\n");
+            return Optional.ofNullable(new Line(line));
+        }, args);
     }
 
     public static List<Line> exec(final Path workingDirectory, final String command, LineProcessor processor,
@@ -51,7 +62,7 @@ public class Console {
             BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line = "";
             while ((line = reader.readLine()) != null) {
-                processor.process(line).ifPresent(result -> lines.add(result));
+                processor.process(line).ifPresent(lines::add);
             }
         } catch (Exception e) {
             printf("The command [" + command + "]" + " could not be executed");
@@ -65,6 +76,24 @@ public class Console {
             sb.append(" ").append(arg);
         }
         return sb.toString();
+    }
 
+    public static void testNativeCommand(NativeCommand nc) {
+        StringBuilder output = new StringBuilder();
+        try {
+            Process p = Runtime.getRuntime().exec(nc.getTestCommand());
+            p.waitFor();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String line = "";
+            while ((line = reader.readLine()) != null) {
+                output.append(line + "\n");
+            }
+            LOGGER.info("[" + nc.getCommand() + "]" + " is installed");
+            nc.setInfoMessage(output.toString());
+            nc.setActive(true);
+        } catch (Exception e) {
+            LOGGER.warn("[" + nc.getCommand() + "]" + " is not installed");
+            nc.setErrorMessage("You must install the command [" + nc.getCommand() + "]");
+        }
     }
 }

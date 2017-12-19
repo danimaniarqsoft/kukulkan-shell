@@ -15,7 +15,7 @@ import mx.infotec.dads.kukulkan.shell.domain.ShellCompletionProposal;
 import mx.infotec.dads.kukulkan.shell.util.Console;
 import mx.infotec.dads.kukulkan.shell.util.LineProcessor;
 
-import static mx.infotec.dads.kukulkan.shell.util.Constants.DOCKER_COMMAND;
+import static mx.infotec.dads.kukulkan.shell.commands.docker.DockerCommands.DOCKER_COMMAND;
 
 /**
  * 

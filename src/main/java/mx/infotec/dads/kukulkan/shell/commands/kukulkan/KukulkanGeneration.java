@@ -1,7 +1,5 @@
 package mx.infotec.dads.kukulkan.shell.commands.kukulkan;
 
-import static mx.infotec.dads.kukulkan.shell.util.Console.printf;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -21,7 +19,6 @@ import mx.infotec.dads.kukulkan.engine.domain.core.DomainModel;
 import mx.infotec.dads.kukulkan.engine.domain.core.DomainModelGroup;
 import mx.infotec.dads.kukulkan.engine.domain.core.GeneratorContext;
 import mx.infotec.dads.kukulkan.engine.domain.core.JavaDomainModel;
-import mx.infotec.dads.kukulkan.engine.domain.core.ProjectConfiguration;
 import mx.infotec.dads.kukulkan.engine.domain.core.Rule;
 import mx.infotec.dads.kukulkan.engine.domain.core.RuleType;
 import mx.infotec.dads.kukulkan.engine.factories.LayerTaskFactory;
@@ -30,13 +27,11 @@ import mx.infotec.dads.kukulkan.engine.grammar.KukulkanVisitor;
 import mx.infotec.dads.kukulkan.engine.repository.RuleRepository;
 import mx.infotec.dads.kukulkan.engine.repository.RuleTypeRepository;
 import mx.infotec.dads.kukulkan.engine.service.GenerationService;
-import mx.infotec.dads.kukulkan.engine.service.layers.frontend.AngularLayerServiceImpl;
 import mx.infotec.dads.kukulkan.engine.util.FileUtil;
 import mx.infotec.dads.kukulkan.engine.util.InflectorProcessor;
 import mx.infotec.dads.kukulkan.engine.util.KukulkanConfigurationProperties;
-import mx.infotec.dads.kukulkan.engine.util.PKGenerationStrategy;
 import mx.infotec.dads.kukulkan.shell.commands.valueprovided.KukulkanFilesProvider;
-import mx.infotec.dads.kukulkan.shell.util.Console;
+import mx.infotec.dads.kukulkan.shell.domain.ProjectContext;
 
 /**
  * Util Commands
@@ -57,7 +52,7 @@ public class KukulkanGeneration {
     private RuleTypeRepository ruleTypeRepository;
 
     @Autowired
-    private ProjectConfiguration pConf;
+    private ProjectContext context;
 
     @Autowired
     private LayerTaskFactory layerTaskFactory;
@@ -77,7 +72,8 @@ public class KukulkanGeneration {
     }
 
     @ShellMethod("Create entities from file with .3k extension")
-    public void createScaffoldingFromFile(@ShellOption(valueProvider = KukulkanFilesProvider.class) File file) throws IOException {
+    public void createScaffoldingFromFile(@ShellOption(valueProvider = KukulkanFilesProvider.class) File file)
+            throws IOException {
         // Create ProjectConfiguration
         configInflectorProcessor();
         // Create DataModel
@@ -88,7 +84,7 @@ public class KukulkanGeneration {
         dataModel.setDomainModelGroup(dmgList);
         // Create GeneratorContext
         LOGGER.info("Processing File...");
-        GeneratorContext genCtx = new GeneratorContext(dataModel, pConf);
+        GeneratorContext genCtx = new GeneratorContext(dataModel, context.getProject());
         // Process Activities
         generationService.process(genCtx, layerTaskFactory.getLayerTaskSet(ArchetypeType.ANGULAR_SPRING));
         FileUtil.saveToFile(genCtx);

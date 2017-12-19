@@ -9,7 +9,7 @@ import org.springframework.shell.standard.ShellMethodAvailability;
 import org.springframework.shell.standard.ShellOption;
 
 import mx.infotec.dads.kukulkan.shell.util.Console;
-import static mx.infotec.dads.kukulkan.shell.util.Constants.DOCKER_COMMAND;
+import static mx.infotec.dads.kukulkan.shell.commands.docker.DockerCommands.DOCKER_COMMAND;
 
 /**
  * Orion Context Broker Commands
@@ -21,19 +21,15 @@ import static mx.infotec.dads.kukulkan.shell.util.Constants.DOCKER_COMMAND;
 public class OrionCommands {
     private boolean isRunning;
 
-
     @ShellMethod("Create a instance of the Orion Context Broker")
     public void orionStart(@ShellOption(defaultValue = "1026") String port) {
         Console.exec(DOCKER_COMMAND, "run", "-d", "--name", "orion", "-p", port + ":1026", "fiware/orion");
-        isRunning = true;
     }
 
     @ShellMethod("Stop a instance of the Orion Context Broker")
     public void orionStop(@ShellOption(defaultValue = NULL) String containerId) {
         Console.exec(DOCKER_COMMAND, "start", containerId);
-        isRunning = false;
     }
-
 
     @ShellMethodAvailability({ "dockerShowRunningProcess", "dockerStop" })
     public Availability orionStartAvailability() {

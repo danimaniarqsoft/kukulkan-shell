@@ -1,5 +1,7 @@
 package mx.infotec.dads.kukulkan.shell.commands.docker;
 
+import static mx.infotec.dads.kukulkan.shell.commands.docker.DockerCommands.DOCKER_COMMAND;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -14,8 +16,6 @@ import mx.infotec.dads.kukulkan.shell.domain.Line;
 import mx.infotec.dads.kukulkan.shell.domain.ShellCompletionProposal;
 import mx.infotec.dads.kukulkan.shell.util.Console;
 import mx.infotec.dads.kukulkan.shell.util.LineProcessor;
-
-import static mx.infotec.dads.kukulkan.shell.util.Constants.DOCKER_COMMAND;
 
 @Component
 public class DockerStartValueProvider extends ValueProviderSupport {

@@ -2,15 +2,16 @@ package mx.infotec.dads.kukulkan.shell.commands.docker;
 
 import static mx.infotec.dads.kukulkan.shell.util.Constants.NULL;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.Availability;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellMethodAvailability;
 import org.springframework.shell.standard.ShellOption;
 
-import mx.infotec.dads.kukulkan.shell.domain.AvailableNativeCommands;
+import mx.infotec.dads.kukulkan.shell.domain.NativeCommand;
+import mx.infotec.dads.kukulkan.shell.domain.ProjectContext;
 import mx.infotec.dads.kukulkan.shell.util.Console;
-import static mx.infotec.dads.kukulkan.shell.util.Constants.DOCKER_COMMAND;
 
 /**
  * Docker Commands
@@ -20,6 +21,11 @@ import static mx.infotec.dads.kukulkan.shell.util.Constants.DOCKER_COMMAND;
  */
 @ShellComponent
 public class DockerCommands {
+
+    public static final String DOCKER_COMMAND = "docker";
+
+    @Autowired
+    ProjectContext projectContext;
 
     @ShellMethod("Show the current docker process running")
     public void dockerPs() {
@@ -40,7 +46,8 @@ public class DockerCommands {
 
     @ShellMethodAvailability({ "dockerShowRunningProcess", "dockerStop" })
     public Availability dockerShowRunningProcessAvailability() {
-        if (AvailableNativeCommands.isDockerInstalled()) {
+        NativeCommand dockerCmd = projectContext.getAvailableCommands().get(DOCKER_COMMAND);
+        if (dockerCmd != null && dockerCmd.isActive()) {
             return Availability.available();
         } else {
             return Availability.unavailable("you must install docker");
