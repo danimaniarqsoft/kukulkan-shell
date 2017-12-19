@@ -31,15 +31,11 @@ public class Navigator {
     }
 
     public void setCurrentPath(Path currentPath) {
+        this.previusPath= this.currentPath;
         this.currentPath = currentPath;
     }
 
     public Path getPreviusPath() {
         return previusPath;
     }
-
-    public void setPreviusPath(Path previusPath) {
-        this.previusPath = previusPath;
-    }
-
 }

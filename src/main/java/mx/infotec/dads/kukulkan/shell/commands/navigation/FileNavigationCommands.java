@@ -10,6 +10,8 @@ import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 
+import mx.infotec.dads.kukulkan.shell.commands.publishers.EventType;
+import mx.infotec.dads.kukulkan.shell.commands.publishers.LocationChangeEventPublisher;
 import mx.infotec.dads.kukulkan.shell.domain.Navigator;
 import mx.infotec.dads.kukulkan.shell.util.Console;
 import mx.infotec.dads.kukulkan.shell.util.FilesCommons;
@@ -26,12 +28,15 @@ public class FileNavigationCommands {
     @Autowired
     private Navigator nav;
 
+    @Autowired
+    private LocationChangeEventPublisher publisher;
+
     @ShellMethod("Show the current direction")
     public void pwd() {
         Console.printf(nav.getCurrentPath().toString());
     }
 
-    @ShellMethod(value = "List the currents files", key={"ls","ll"})
+    @ShellMethod(value = "List the currents files", key = { "ls", "ll", "dir" })
     public void ls() {
         FilesCommons.showFiles(nav.getCurrentPath());
     }
@@ -45,8 +50,8 @@ public class FileNavigationCommands {
             newPath = Paths.get(nav.getCurrentPath().toAbsolutePath().toString(), dir);
         }
         if (newPath.toFile().exists()) {
-            nav.setPreviusPath(nav.getCurrentPath());
             nav.setCurrentPath(newPath);
+            publisher.publishEvent(EventType.FILE_NAVIGATION);
         } else {
             Console.printf("The dir does not exist: " + newPath.toString());
         }

@@ -56,4 +56,16 @@ public class FilesCommons {
         }
         return completionProposal;
     }
+
+    public static boolean hasGitFiles(Path currentPath) {
+        try (DirectoryStream<Path> directories = Files.newDirectoryStream(currentPath)) {
+            for (Path path : directories) {
+                if (path.toFile().isDirectory() && path.toFile().getName().equals(".git")) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+        }
+        return false;
+    }
 }

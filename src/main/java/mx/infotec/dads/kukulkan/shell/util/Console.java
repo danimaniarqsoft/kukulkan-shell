@@ -4,6 +4,8 @@ import static mx.infotec.dads.kukulkan.shell.util.AnsiConstants.ANSI_GREEN;
 import static mx.infotec.dads.kukulkan.shell.util.AnsiConstants.ANSI_RESET;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -31,17 +33,21 @@ public class Console {
     }
 
     public static void exec(final String command, String... args) {
-        exec(command, (s) -> {
+        exec(Paths.get("."), command, (s) -> {
             printf(s + "\n");
             return Optional.ofNullable(new Line(s));
         }, args);
     }
 
     public static List<Line> exec(final String command, LineProcessor processor, String... args) {
+        return exec(Paths.get("."), command, processor, args);
+    }
+
+    public static List<Line> exec(final Path workingDirectory, final String command, LineProcessor processor,
+            String... args) {
         List<Line> lines = new ArrayList<>();
         try {
-            printf(command + formatArgs(args));
-            Process p = Runtime.getRuntime().exec(command + formatArgs(args));
+            Process p = Runtime.getRuntime().exec(command + formatArgs(args), null, workingDirectory.toFile());
             BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line = "";
             while ((line = reader.readLine()) != null) {

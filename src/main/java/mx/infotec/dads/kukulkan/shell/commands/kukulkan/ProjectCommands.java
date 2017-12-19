@@ -14,6 +14,7 @@ import mx.infotec.dads.kukulkan.engine.domain.core.ProjectConfiguration;
 import mx.infotec.dads.kukulkan.engine.util.PKGenerationStrategy;
 import mx.infotec.dads.kukulkan.shell.commands.publishers.LocationChangeEventPublisher;
 import mx.infotec.dads.kukulkan.shell.commands.valueprovided.GenerationTypeProvider;
+
 import static mx.infotec.dads.kukulkan.shell.util.Constants.NULL;
 
 /**
@@ -52,7 +53,6 @@ public class ProjectCommands {
         printf("Version", pConf.getVersion());
         printf("Web Layer", pConf.getWebLayerName());
         printf("Year", pConf.getYear());
-        event.doStuffAndPublishAnEvent("saludos");
     }
 
     @ShellMethod("set some property to the ProjectConfiguration Object")
