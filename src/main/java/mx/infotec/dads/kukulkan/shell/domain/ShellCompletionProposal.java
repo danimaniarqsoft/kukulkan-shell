@@ -14,4 +14,8 @@ public class ShellCompletionProposal extends CompletionProposal {
         super(lineText);
         this.description(description);
     }
+
+    public ShellCompletionProposal(String lineText) {
+        super(lineText);
+    }
 }

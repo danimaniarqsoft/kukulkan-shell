@@ -12,6 +12,7 @@ import org.springframework.shell.standard.ShellOption;
 
 import mx.infotec.dads.kukulkan.engine.domain.core.ProjectConfiguration;
 import mx.infotec.dads.kukulkan.engine.util.PKGenerationStrategy;
+import mx.infotec.dads.kukulkan.shell.commands.publishers.LocationChangeEventPublisher;
 import mx.infotec.dads.kukulkan.shell.commands.valueprovided.GenerationTypeProvider;
 import static mx.infotec.dads.kukulkan.shell.util.Constants.NULL;
 
@@ -28,6 +29,8 @@ public class ProjectCommands {
 
     @Autowired
     private ProjectConfiguration pConf;
+    @Autowired
+    private LocationChangeEventPublisher event;
 
     @PostConstruct
     public void initApplication() {
@@ -36,20 +39,20 @@ public class ProjectCommands {
 
     @ShellMethod("Show the current Project Configuration of the project")
     public void projectShow() {
-        printf("[ID                 ]", pConf.getId());
-        printf("[Author             ]", pConf.getAuthor());
-        printf("[DAO Layer          ]", pConf.getDaoLayerName());
-        printf("[Domain Layer       ]", pConf.getDomainLayerName());
-        printf("[DTO Layer          ]", pConf.getDtoLayerName());
-        printf("[Exception Layer    ]", pConf.getExceptionLayerName());
-        printf("[Key Generation Type]", pConf.getGlobalGenerationType().toString());
-        printf("[Group ID           ]", pConf.getGroupId());
-        printf("[Packaging          ]", pConf.getPackaging());
-        printf("[Service Layer      ]", pConf.getServiceLayerName());
-        printf("[Version            ]", pConf.getVersion());
-        printf("[Web Layer          ]", pConf.getWebLayerName());
-        printf("[Year               ]", pConf.getYear());
-
+        printf("ID", pConf.getId());
+        printf("Author", pConf.getAuthor());
+        printf("DAO Layer", pConf.getDaoLayerName());
+        printf("Domain Layer", pConf.getDomainLayerName());
+        printf("DTO Layer", pConf.getDtoLayerName());
+        printf("Exception Layer", pConf.getExceptionLayerName());
+        printf("Key Generation Type", pConf.getGlobalGenerationType().toString());
+        printf("Group ID", pConf.getGroupId());
+        printf("Packaging", pConf.getPackaging());
+        printf("Service Layer", pConf.getServiceLayerName());
+        printf("Version", pConf.getVersion());
+        printf("Web Layer", pConf.getWebLayerName());
+        printf("Year", pConf.getYear());
+        event.doStuffAndPublishAnEvent("saludos");
     }
 
     @ShellMethod("set some property to the ProjectConfiguration Object")
