@@ -54,6 +54,10 @@ public class Console {
         }, args);
     }
 
+    public static List<Line> exec(final Path workingDirectory, final String command, String... args) {
+        return exec(workingDirectory, command, line -> Optional.ofNullable(new Line(line)), args);
+    }
+
     public static List<Line> exec(final Path workingDirectory, final String command, LineProcessor processor,
             String... args) {
         List<Line> lines = new ArrayList<>();

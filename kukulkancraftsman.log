@@ -362,3 +362,34 @@
 1513721951546:help
 1513722065214:docker-ps
 1513722093777:docker-stop --container-id 7069ee7142d9
+1513729739128:cd ..
+1513729742294:cd demo
+1513729751174:git-create-feature
+1513729764612:git-create-feature --feature-name my-feature
+1513729917023:cd ../demo
+1513729920417:pwd
+1513729924355:cd ..
+1513729927752:pwd
+1513729929482:cd demo
+1513729930956:pwd
+1513729940876:exit
+1513729951440:cd ..
+1513729952615:ll
+1513729958756:pwd
+1513729961510:cd demo
+1513729980696:git-create-feature --feature-name my-feature
+1513729998596:git-create-feature --feature-name my-features
+1513730002341:pwd
+1513730124668:git-create-feature --feature-name my-features
+1513730239278:cd ..
+1513730240602:cd demo
+1513730253561:git-create-feature hola
+1513731103166:cd ..
+1513731105827:cd demo
+1513731107880:git-create-feature hola
+1513731119152:git-create-feature hola-feature
+1513731167086:cd ..
+1513731174360:cd demo
+1513731186217:git-create-feature seguridad
+1513731229277:git-create-feature nuevo
+1513732546926:native-commands
