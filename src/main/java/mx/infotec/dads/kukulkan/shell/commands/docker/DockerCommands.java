@@ -11,7 +11,8 @@ import org.springframework.shell.standard.ShellOption;
 
 import mx.infotec.dads.kukulkan.shell.domain.NativeCommand;
 import mx.infotec.dads.kukulkan.shell.domain.ProjectContext;
-import mx.infotec.dads.kukulkan.shell.util.Console;
+import mx.infotec.dads.kukulkan.shell.domain.ShellCommand;
+import mx.infotec.dads.kukulkan.shell.services.CommandService;
 
 /**
  * Docker Commands
@@ -27,21 +28,24 @@ public class DockerCommands {
     @Autowired
     ProjectContext projectContext;
 
+    @Autowired
+    CommandService commandService;
+
     @ShellMethod("Show the current docker process running")
     public void dockerPs() {
-        Console.exec(DOCKER_COMMAND, "ps");
+        commandService.exec(new ShellCommand(DOCKER_COMMAND).addArg("ps"));
     }
 
     @ShellMethod("Show the current docker process running")
     public void dockerStop(
             @ShellOption(valueProvider = DockerStopValueProvider.class, defaultValue = NULL) String containerId) {
-        Console.exec(DOCKER_COMMAND, "stop", containerId);
+        commandService.exec(new ShellCommand(DOCKER_COMMAND).addArg("stop").addArg(containerId));
     }
 
     @ShellMethod("Show the current docker process running")
     public void dockerStart(
             @ShellOption(valueProvider = DockerStartValueProvider.class, defaultValue = NULL) String containerId) {
-        Console.exec(DOCKER_COMMAND, "start", containerId);
+        commandService.exec(new ShellCommand(DOCKER_COMMAND).addArg("start").addArg(containerId));
     }
 
     @ShellMethodAvailability({ "dockerShowRunningProcess", "dockerStop" })

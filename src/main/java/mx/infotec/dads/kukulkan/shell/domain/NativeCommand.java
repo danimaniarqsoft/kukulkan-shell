@@ -6,7 +6,7 @@ package mx.infotec.dads.kukulkan.shell.domain;
  * @author Daniel Cortes Pichardo
  *
  */
-public interface NativeCommand extends Comparable<NativeCommand> {
+public interface NativeCommand extends Command, Comparable<NativeCommand> {
 
     /**
      * Return the command to be executed

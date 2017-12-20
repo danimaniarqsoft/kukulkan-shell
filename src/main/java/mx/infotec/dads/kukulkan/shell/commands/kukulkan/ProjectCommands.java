@@ -1,8 +1,5 @@
 package mx.infotec.dads.kukulkan.shell.commands.kukulkan;
 
-import static mx.infotec.dads.kukulkan.shell.util.Console.printf;
-import javax.annotation.PostConstruct;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +7,11 @@ import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 
-import mx.infotec.dads.kukulkan.engine.domain.core.ProjectConfiguration;
 import mx.infotec.dads.kukulkan.engine.util.PKGenerationStrategy;
 import mx.infotec.dads.kukulkan.shell.commands.publishers.LocationChangeEventPublisher;
 import mx.infotec.dads.kukulkan.shell.commands.valueprovided.GenerationTypeProvider;
 import mx.infotec.dads.kukulkan.shell.domain.ProjectContext;
+import mx.infotec.dads.kukulkan.shell.services.CommandService;
 
 import static mx.infotec.dads.kukulkan.shell.util.Constants.NULL;
 
@@ -27,6 +24,9 @@ import static mx.infotec.dads.kukulkan.shell.util.Constants.NULL;
 @ShellComponent
 public class ProjectCommands {
 
+    @Autowired
+    CommandService commandService;
+
     private static final Logger LOGGER = LoggerFactory.getLogger(ProjectCommands.class);
 
     @Autowired
@@ -36,19 +36,19 @@ public class ProjectCommands {
 
     @ShellMethod("Show the current Project Configuration of the project")
     public void projectShow() {
-        printf("ID", context.getProject().getId());
-        printf("Author", context.getProject().getAuthor());
-        printf("DAO Layer", context.getProject().getDaoLayerName());
-        printf("Domain Layer", context.getProject().getDomainLayerName());
-        printf("DTO Layer", context.getProject().getDtoLayerName());
-        printf("Exception Layer", context.getProject().getExceptionLayerName());
-        printf("Key Generation Type", context.getProject().getGlobalGenerationType().toString());
-        printf("Group ID", context.getProject().getGroupId());
-        printf("Packaging", context.getProject().getPackaging());
-        printf("Service Layer", context.getProject().getServiceLayerName());
-        printf("Version", context.getProject().getVersion());
-        printf("Web Layer", context.getProject().getWebLayerName());
-        printf("Year", context.getProject().getYear());
+        commandService.printf("ID", context.getProject().getId());
+        commandService.printf("Author", context.getProject().getAuthor());
+        commandService.printf("DAO Layer", context.getProject().getDaoLayerName());
+        commandService.printf("Domain Layer", context.getProject().getDomainLayerName());
+        commandService.printf("DTO Layer", context.getProject().getDtoLayerName());
+        commandService.printf("Exception Layer", context.getProject().getExceptionLayerName());
+        commandService.printf("Key Generation Type", context.getProject().getGlobalGenerationType().toString());
+        commandService.printf("Group ID", context.getProject().getGroupId());
+        commandService.printf("Packaging", context.getProject().getPackaging());
+        commandService.printf("Service Layer", context.getProject().getServiceLayerName());
+        commandService.printf("Version", context.getProject().getVersion());
+        commandService.printf("Web Layer", context.getProject().getWebLayerName());
+        commandService.printf("Year", context.getProject().getYear());
     }
 
     @ShellMethod("set some property to the ProjectConfiguration Object")
@@ -60,55 +60,55 @@ public class ProjectCommands {
             @ShellOption(defaultValue = NULL) String serviceLayer, @ShellOption(defaultValue = NULL) String version,
             @ShellOption(defaultValue = NULL) String webLayer, @ShellOption(defaultValue = NULL) String year) {
         if (!NULL.equals(id)) {
-            printf("set [ID] to ", id);
+            commandService.printf("set [ID] to ", id);
             context.getProject().setId(id);
         }
         if (!NULL.equals(author)) {
-            printf("set [author] to ", author);
+            commandService.printf("set [author] to ", author);
             context.getProject().setAuthor(author);
         }
         if (!NULL.equals(daoLayer)) {
-            printf("set [daoLayer] to ", daoLayer);
+            commandService.printf("set [daoLayer] to ", daoLayer);
             context.getProject().setDaoLayerName(daoLayer);
         }
         if (!NULL.equals(domainLayer)) {
-            printf("set [domainLayer] to ", domainLayer);
+            commandService.printf("set [domainLayer] to ", domainLayer);
             context.getProject().setDomainLayerName(domainLayer);
         }
         if (!NULL.equals(dtoLayer)) {
-            printf("set [dtoLayer] to ", dtoLayer);
+            commandService.printf("set [dtoLayer] to ", dtoLayer);
             context.getProject().setDtoLayerName(dtoLayer);
         }
         if (!NULL.equals(exceptionLayer)) {
-            printf("set [exception Layer] to " + exceptionLayer);
+            commandService.printf("set [exception Layer] to " + exceptionLayer);
             context.getProject().setExceptionLayerName(exceptionLayer);
         }
         if (!NULL.equals(groupId)) {
-            printf("set [groupId] to ", groupId);
+            commandService.printf("set [groupId] to ", groupId);
             context.getProject().setGroupId(groupId);
         }
         if (!NULL.equals(packaging)) {
-            printf("set [packaging] to ", packaging);
+            commandService.printf("set [packaging] to ", packaging);
             context.getProject().setPackaging(packaging);
         }
         if (!NULL.equals(serviceLayer)) {
-            printf("set [serviceLayer] to ", serviceLayer);
+            commandService.printf("set [serviceLayer] to ", serviceLayer);
             context.getProject().setServiceLayerName(serviceLayer);
         }
         if (!NULL.equals(version)) {
-            printf("set [version] to ", version);
+            commandService.printf("set [version] to ", version);
             context.getProject().setVersion(version);
         }
         if (!NULL.equals(webLayer)) {
-            printf("set [webLayer] to ", webLayer);
+            commandService.printf("set [webLayer] to ", webLayer);
             context.getProject().setWebLayerName(webLayer);
         }
         if (!NULL.equals(year)) {
-            printf("set [year] to ", year);
+            commandService.printf("set [year] to ", year);
             context.getProject().setYear(year);
         }
         if (!keyTypeGeneration.equals(PKGenerationStrategy.NULL)) {
-            printf("set [GenerationType] to ", keyTypeGeneration.name());
+            commandService.printf("set [GenerationType] to ", keyTypeGeneration.name());
             context.getProject().setGlobalGenerationType(keyTypeGeneration);
         }
     }
@@ -129,7 +129,7 @@ public class ProjectCommands {
         context.getProject().setDomainLayerName("domain");
         context.getProject().setMongoDb(true);
         context.getProject().setGlobalGenerationType(PKGenerationStrategy.SEQUENCE);
-        printf("ProjectConfiguration reset to:");
+        commandService.printf("ProjectConfiguration reset to:");
         projectShow();
     }
 }

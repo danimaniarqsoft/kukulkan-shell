@@ -2,13 +2,16 @@ package mx.infotec.dads.kukulkan.shell.commands.fiware;
 
 import static mx.infotec.dads.kukulkan.shell.util.Constants.NULL;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.Availability;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellMethodAvailability;
 import org.springframework.shell.standard.ShellOption;
 
-import mx.infotec.dads.kukulkan.shell.util.Console;
+import mx.infotec.dads.kukulkan.shell.domain.ShellCommand;
+import mx.infotec.dads.kukulkan.shell.services.CommandService;
+
 import static mx.infotec.dads.kukulkan.shell.commands.docker.DockerCommands.DOCKER_COMMAND;
 
 /**
@@ -19,16 +22,21 @@ import static mx.infotec.dads.kukulkan.shell.commands.docker.DockerCommands.DOCK
  */
 @ShellComponent
 public class OrionCommands {
+
+    @Autowired
+    CommandService commandService;
+
     private boolean isRunning;
 
     @ShellMethod("Create a instance of the Orion Context Broker")
     public void orionStart(@ShellOption(defaultValue = "1026") String port) {
-        Console.exec(DOCKER_COMMAND, "run", "-d", "--name", "orion", "-p", port + ":1026", "fiware/orion");
+        commandService.exec(new ShellCommand(DOCKER_COMMAND).addArg("run").addArg("-d").addArg("--name")
+                .addArg("-orion").addArg("-p").addArg(port + ":1026").addArg("fiware/orion"));
     }
 
     @ShellMethod("Stop a instance of the Orion Context Broker")
     public void orionStop(@ShellOption(defaultValue = NULL) String containerId) {
-        Console.exec(DOCKER_COMMAND, "start", containerId);
+        commandService.exec(new ShellCommand(DOCKER_COMMAND).addArg("start").addArg(containerId));
     }
 
     @ShellMethodAvailability({ "dockerShowRunningProcess", "dockerStop" })

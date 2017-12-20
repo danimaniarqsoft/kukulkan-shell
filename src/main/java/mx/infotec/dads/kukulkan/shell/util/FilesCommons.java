@@ -31,17 +31,19 @@ public class FilesCommons {
         return completionProposal;
     }
 
-    public static List<CompletionProposal> showFiles(Path currentPath) {
-        List<CompletionProposal> completionProposal = new ArrayList<>();
+    public static List<CharSequence> showFiles(Path currentPath) {
+        List<CharSequence> fileList = new ArrayList<>();
+        fileList.add("");
         try (DirectoryStream<Path> directories = Files.newDirectoryStream(currentPath);) {
             for (Path path : directories) {
                 if (!path.toFile().isDirectory()) {
-                    Console.printf(path.getFileName().toString());
+                    fileList.add(path.getFileName().toString());
                 }
             }
         } catch (IOException e) {
         }
-        return completionProposal;
+        fileList.add("\n");
+        return fileList;
     }
 
     public static List<CompletionProposal> filterDirs(Path currentPath) {
