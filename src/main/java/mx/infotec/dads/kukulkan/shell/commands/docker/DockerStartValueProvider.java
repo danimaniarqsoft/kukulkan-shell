@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.jline.utils.AttributedString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.shell.CompletionContext;
@@ -18,6 +19,7 @@ import mx.infotec.dads.kukulkan.shell.domain.ShellCommand;
 import mx.infotec.dads.kukulkan.shell.domain.ShellCompletionProposal;
 import mx.infotec.dads.kukulkan.shell.services.CommandService;
 import mx.infotec.dads.kukulkan.shell.util.LineProcessor;
+import mx.infotec.dads.kukulkan.shell.util.LineValuedProcessor;
 
 @Component
 public class DockerStartValueProvider extends ValueProviderSupport {
@@ -28,7 +30,7 @@ public class DockerStartValueProvider extends ValueProviderSupport {
     @Override
     public List<CompletionProposal> complete(MethodParameter parameter, CompletionContext completionContext,
             String[] hints) {
-        LineProcessor processor = (line -> {
+        LineValuedProcessor processor = (line -> {
             String[] split = line.split("\\s{2,}");
             if (split.length > 0 && !split[0].equals("CONTAINER ID") && split[4].contains("Exited")) {
                 return Optional.ofNullable(new Line(split[0], split[5]));

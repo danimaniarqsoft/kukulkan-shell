@@ -31,12 +31,12 @@ public class PromptServiceImpl implements PromptService {
     public AttributedString createPrompt(Path currentPath, AttributedString basePrompt, AttributedString endPrompt) {
         AttributedString dirPrompt = null;
         if (FilesCommons.hasGitFiles(currentPath)) {
-            List<Line> result = commandService.exec(currentPath,
+            List<CharSequence> result = commandService.exec(currentPath,
                     new ShellCommand(GIT).addArg("rev-parse").addArg("--abbrev-ref").addArg("HEAD"),
-                    (line) -> Optional.ofNullable(new Line(line)));
+                    (line) -> Optional.ofNullable(new AttributedString(line)));
             dirPrompt = AttributedString.join(new AttributedString(""),
                     new AttributedString(" @", AttributedStyle.BOLD.foreground(AttributedStyle.YELLOW)),
-                    new AttributedString("git/" + result.get(0).getText(),
+                    new AttributedString("git/" + result.get(0).toString(),
                             AttributedStyle.BOLD_OFF.foreground(AttributedStyle.YELLOW)));
         } else {
             dirPrompt = new AttributedString("");

@@ -18,5 +18,5 @@ public interface LineProcessor {
      * @param line
      * @return
      */
-    Optional<Line> process(String line);
+    Optional<CharSequence> process(String line);
 }

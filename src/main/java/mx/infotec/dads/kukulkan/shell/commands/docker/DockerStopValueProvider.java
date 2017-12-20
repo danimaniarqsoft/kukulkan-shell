@@ -16,6 +16,7 @@ import mx.infotec.dads.kukulkan.shell.domain.ShellCommand;
 import mx.infotec.dads.kukulkan.shell.domain.ShellCompletionProposal;
 import mx.infotec.dads.kukulkan.shell.services.CommandService;
 import mx.infotec.dads.kukulkan.shell.util.LineProcessor;
+import mx.infotec.dads.kukulkan.shell.util.LineValuedProcessor;
 
 import static mx.infotec.dads.kukulkan.shell.commands.docker.DockerCommands.DOCKER_COMMAND;
 
@@ -33,7 +34,7 @@ public class DockerStopValueProvider extends ValueProviderSupport {
     @Override
     public List<CompletionProposal> complete(MethodParameter parameter, CompletionContext completionContext,
             String[] hints) {
-        LineProcessor processor = (line -> {
+        LineValuedProcessor processor = (line -> {
             String[] split = line.split("\\s{2,}");
             if (split.length > 0 && !split[0].equals("CONTAINER ID")) {
                 return Optional.ofNullable(new Line(split[0], split[6]));
