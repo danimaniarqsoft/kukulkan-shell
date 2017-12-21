@@ -1,14 +1,9 @@
 package mx.infotec.dads.kukulkan.shell.commands.git;
 
-import static mx.infotec.dads.kukulkan.shell.commands.docker.DockerCommands.GIT_COMMAND;
-
-import java.util.List;import java.util.stream.Collector;
-import java.util.stream.Collectors;
-
+import java.util.List;
 import javax.validation.constraints.NotNull;
 
 import org.jline.utils.AttributedString;
-import org.jline.utils.AttributedStyle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.Availability;
 import org.springframework.shell.standard.ShellComponent;
@@ -49,7 +44,7 @@ public class GitCommands {
 
     @ShellMethod("Create a new Feature")
     public List<AttributedString> gitStatus() {
-        List<CharSequence> exec = commandService.exec(new ShellCommand(GIT_COMMAND, "status"));        
+        List<CharSequence> exec = commandService.exec(new ShellCommand(GIT_COMMAND, "status"));
         publisher.publishEvent(EventType.FILE_NAVIGATION);
         return ResultFormatter.formatToGitOutput(exec);
     }
