@@ -37,14 +37,14 @@ import mx.infotec.dads.kukulkan.shell.util.LineValuedProcessor;
 @Service
 public class CommandServiceImpl implements CommandService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CommandServiceImpl.class);
+
     @Autowired
     @Lazy
     Terminal terminal;
-    
+
     @Autowired
     Navigator nav;
-
-    private final Logger LOGGER = LoggerFactory.getLogger(CommandServiceImpl.class);
 
     @Override
     public void printf(String text) {

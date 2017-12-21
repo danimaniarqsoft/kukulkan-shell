@@ -1,9 +1,11 @@
-package mx.infotec.dads.kukulkan.shell;
+package mx.infotec.dads.kukulkan.shell.config;
+
+import static mx.infotec.dads.kukulkan.shell.util.ResultFormatter.defaulBasePrompt;
+import static mx.infotec.dads.kukulkan.shell.util.ResultFormatter.defaulEndPrompt;
 
 import javax.annotation.PostConstruct;
 
 import org.jline.utils.AttributedString;
-import org.jline.utils.AttributedStyle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.shell.jline.PromptProvider;
@@ -14,13 +16,14 @@ import mx.infotec.dads.kukulkan.shell.domain.Navigator;
 import mx.infotec.dads.kukulkan.shell.services.PromptService;
 
 /**
- * KukulkanPrompt Provided
+ * KukulkanPrompt Provided: * A provider that sets the shell prompt to
+ * 'kukulkan'
  * 
  * @author Daniel Cortes Pichardo
  *
  */
 @Component
-public class KukulkanPrompt implements PromptProvider {
+public class KukulkanPromptProvided implements PromptProvider {
 
     @Autowired
     private Navigator nav;
@@ -28,17 +31,16 @@ public class KukulkanPrompt implements PromptProvider {
     @Autowired
     private PromptService promptService;
 
-    private AttributedString prompt = new AttributedString("kukulkan",
-            AttributedStyle.BOLD.foreground(AttributedStyle.BLUE));
+    private AttributedString prompt;
 
-    private AttributedString basePrompt = new AttributedString("kukulkan",
-            AttributedStyle.BOLD.foreground(AttributedStyle.BLUE));
+    private AttributedString basePrompt;
 
-    private AttributedString endPrompt = new AttributedString("> ",
-            AttributedStyle.BOLD.foreground(AttributedStyle.BLUE));
+    private AttributedString endPrompt;
 
     @PostConstruct
     private void init() {
+        basePrompt = defaulBasePrompt();
+        endPrompt = defaulEndPrompt();
         prompt = promptService.createPrompt(nav.getCurrentPath(), basePrompt, endPrompt);
     }
 

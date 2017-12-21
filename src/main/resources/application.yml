@@ -10,6 +10,8 @@ spring:
       database: kukulkancraftsman
   jmx:
     enabled: false
+  main:
+    banner-mode: 'console'
 kukulkan:
   config:
     inputdir: /home/daniel/git/

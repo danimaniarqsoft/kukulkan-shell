@@ -9,16 +9,16 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.jline.utils.AttributedString;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 
 import mx.infotec.dads.kukulkan.shell.commands.publishers.EventType;
-import mx.infotec.dads.kukulkan.shell.commands.publishers.LocationChangeEventPublisher;
+import mx.infotec.dads.kukulkan.shell.commands.publishers.LocationUpdatedEvent;
 import mx.infotec.dads.kukulkan.shell.domain.Navigator;
 import mx.infotec.dads.kukulkan.shell.services.CommandService;
 
@@ -38,7 +38,7 @@ public class FileNavigationCommands {
     CommandService commandService;
 
     @Autowired
-    private LocationChangeEventPublisher publisher;
+    private ApplicationEventPublisher publisher;
 
     @ShellMethod("Show the current direction")
     public AttributedString pwd() {
@@ -60,7 +60,7 @@ public class FileNavigationCommands {
     private AttributedString validateNewPath(Path newPath) {
         if (newPath.toFile().exists()) {
             nav.setCurrentPath(newPath);
-            publisher.publishEvent(EventType.FILE_NAVIGATION);
+            publisher.publishEvent(new LocationUpdatedEvent(EventType.FILE_NAVIGATION));
             return formatNormalText(newPath.toString());
         } else {
             return formatDirNotExistText(newPath.toString());

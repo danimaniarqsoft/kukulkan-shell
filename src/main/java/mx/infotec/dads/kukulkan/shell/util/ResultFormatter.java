@@ -45,4 +45,12 @@ public class ResultFormatter {
     public static AttributedString formatErrorText(String text) {
         return new AttributedString(text, AttributedStyle.BOLD.foreground(AttributedStyle.RED));
     }
+
+    public static AttributedString defaulBasePrompt() {
+        return new AttributedString("kukulkan", AttributedStyle.BOLD.foreground(AttributedStyle.BLUE));
+    }
+
+    public static AttributedString defaulEndPrompt() {
+        return new AttributedString("> ", AttributedStyle.BOLD.foreground(AttributedStyle.BLUE));
+    }
 }

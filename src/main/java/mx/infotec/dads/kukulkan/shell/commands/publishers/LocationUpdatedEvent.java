@@ -1,6 +1,6 @@
 package mx.infotec.dads.kukulkan.shell.commands.publishers;
 
-import org.springframework.context.ApplicationEvent;
+import java.io.Serializable;
 
 /**
  * LocationUpdateEvent
@@ -8,17 +8,15 @@ import org.springframework.context.ApplicationEvent;
  * @author Daniel Cortes Pichardo
  *
  */
-public class LocationUpdatedEvent extends ApplicationEvent {
+public class LocationUpdatedEvent implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private EventType eventType;
 
     private String message;
-    
 
-    public LocationUpdatedEvent(Object source, EventType eventType) {
-        super(source);
+    public LocationUpdatedEvent(EventType eventType) {
         this.eventType = eventType;
     }
 

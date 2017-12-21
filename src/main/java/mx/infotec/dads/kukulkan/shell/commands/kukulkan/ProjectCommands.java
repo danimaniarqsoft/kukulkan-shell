@@ -1,5 +1,7 @@
 package mx.infotec.dads.kukulkan.shell.commands.kukulkan;
 
+import static mx.infotec.dads.kukulkan.shell.util.Constants.NULL;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +10,9 @@ import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 
 import mx.infotec.dads.kukulkan.engine.util.PKGenerationStrategy;
-import mx.infotec.dads.kukulkan.shell.commands.publishers.LocationChangeEventPublisher;
 import mx.infotec.dads.kukulkan.shell.commands.valueprovided.GenerationTypeProvider;
 import mx.infotec.dads.kukulkan.shell.domain.ProjectContext;
 import mx.infotec.dads.kukulkan.shell.services.CommandService;
-
-import static mx.infotec.dads.kukulkan.shell.util.Constants.NULL;
 
 /**
  * Util Commands
@@ -31,8 +30,6 @@ public class ProjectCommands {
 
     @Autowired
     private ProjectContext context;
-    @Autowired
-    private LocationChangeEventPublisher event;
 
     @ShellMethod("Show the current Project Configuration of the project")
     public void projectShow() {
