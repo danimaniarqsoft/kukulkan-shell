@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import mx.infotec.dads.kukulkan.shell.domain.Line;
 import mx.infotec.dads.kukulkan.shell.domain.NativeCommand;
+import mx.infotec.dads.kukulkan.shell.domain.Navigator;
 import mx.infotec.dads.kukulkan.shell.domain.ShellCommand;
 import mx.infotec.dads.kukulkan.shell.services.CommandService;
 import mx.infotec.dads.kukulkan.shell.util.AnsiConstants;
@@ -39,6 +40,9 @@ public class CommandServiceImpl implements CommandService {
     @Autowired
     @Lazy
     Terminal terminal;
+    
+    @Autowired
+    Navigator nav;
 
     private final Logger LOGGER = LoggerFactory.getLogger(CommandServiceImpl.class);
 
@@ -54,7 +58,7 @@ public class CommandServiceImpl implements CommandService {
 
     @Override
     public List<CharSequence> exec(final ShellCommand command, LineProcessor processor) {
-        return exec(Paths.get("."), command, processor);
+        return exec(nav.getCurrentPath(), command, processor);
     }
 
     public List<Line> exec(final ShellCommand command, LineValuedProcessor processor) {
@@ -74,9 +78,7 @@ public class CommandServiceImpl implements CommandService {
 
     @Override
     public List<CharSequence> exec(final ShellCommand command) {
-        return exec(Paths.get("."), command, line -> {
-            return Optional.ofNullable(new AttributedString(line));
-        });
+        return exec(nav.getCurrentPath(), command);
     }
 
     @Override
@@ -89,13 +91,14 @@ public class CommandServiceImpl implements CommandService {
         List<CharSequence> lines = new ArrayList<>();
         try {
             Process p = Runtime.getRuntime().exec(command.getExecutableCommand(), null, workingDirectory.toFile());
+            p.waitFor();
             BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line = "";
             while ((line = reader.readLine()) != null) {
                 processor.process(line).ifPresent(lines::add);
             }
         } catch (Exception e) {
-            printf("The command [" + command + "]" + " could not be executed");
+            lines.add(e.getMessage());
         }
         return lines;
     }
