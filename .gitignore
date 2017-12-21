@@ -2,6 +2,9 @@
 # Project Specific
 ######################
 
+kukulkan.log
+.springBeans
+
 
 ######################
 # Eclipse
@@ -115,10 +118,4 @@ Desktop.ini
 # ESLint
 ######################
 .eslintcache
-
-######################
-# KUKULKAN LOGS
-######################
-.logFile*.log
-
 
