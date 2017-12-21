@@ -7,10 +7,19 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jline.utils.AttributedString;
+import org.jline.utils.AttributedStringBuilder;
+import org.jline.utils.AttributedStyle;
 import org.springframework.shell.CompletionProposal;
 
 import mx.infotec.dads.kukulkan.shell.domain.ShellCompletionProposal;
 
+/**
+ * FilesCommon operations
+ * 
+ * @author Daniel Cortes Pichardo
+ *
+ */
 public class FilesCommons {
 
     private FilesCommons() {
@@ -31,18 +40,30 @@ public class FilesCommons {
         return completionProposal;
     }
 
-    public static List<CharSequence> showFiles(Path currentPath) {
-        List<CharSequence> fileList = new ArrayList<>();
-        fileList.add("");
+    public static List<AttributedString> showFiles(Path currentPath) {
+        List<AttributedString> fileList = new ArrayList<>();
+        fileList.add(new AttributedString(""));
         try (DirectoryStream<Path> directories = Files.newDirectoryStream(currentPath);) {
             for (Path path : directories) {
                 if (!path.toFile().isDirectory()) {
-                    fileList.add(path.getFileName().toString());
+                    fileList.add(
+                            new AttributedStringBuilder()
+                                    .append("f ", AttributedStyle.BOLD.foreground(AttributedStyle.WHITE))
+                                    .append(path.getFileName().toString(),
+                                            AttributedStyle.BOLD.foreground(AttributedStyle.WHITE))
+                                    .toAttributedString());
+                } else {
+                    fileList.add(
+                            new AttributedStringBuilder()
+                                    .append("d ", AttributedStyle.BOLD.foreground(AttributedStyle.WHITE))
+                                    .append(path.getFileName().toString(),
+                                            AttributedStyle.BOLD.foreground(AttributedStyle.BLUE))
+                                    .toAttributedString());
                 }
             }
         } catch (IOException e) {
         }
-        fileList.add("\n");
+        fileList.add(new AttributedString(""));
         return fileList;
     }
 

@@ -42,7 +42,7 @@ public class GitCommands {
     @Autowired
     private LocationChangeEventPublisher publisher;
 
-    @ShellMethod("Create a new Feature")
+    @ShellMethod("Show the status of the current git project")
     public List<AttributedString> gitStatus() {
         List<CharSequence> exec = commandService.exec(new ShellCommand(GIT_COMMAND, "status"));
         publisher.publishEvent(EventType.FILE_NAVIGATION);

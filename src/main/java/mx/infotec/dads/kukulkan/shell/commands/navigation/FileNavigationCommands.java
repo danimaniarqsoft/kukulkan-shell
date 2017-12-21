@@ -1,11 +1,17 @@
 package mx.infotec.dads.kukulkan.shell.commands.navigation;
 
-import static mx.infotec.dads.kukulkan.shell.util.Constants.NULL;
+import static mx.infotec.dads.kukulkan.shell.util.FilesCommons.showFiles;
+import static mx.infotec.dads.kukulkan.shell.util.ResultFormatter.formatDirNotExistText;
+import static mx.infotec.dads.kukulkan.shell.util.ResultFormatter.formatNormalText;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.jline.utils.AttributedString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
@@ -15,7 +21,6 @@ import mx.infotec.dads.kukulkan.shell.commands.publishers.EventType;
 import mx.infotec.dads.kukulkan.shell.commands.publishers.LocationChangeEventPublisher;
 import mx.infotec.dads.kukulkan.shell.domain.Navigator;
 import mx.infotec.dads.kukulkan.shell.services.CommandService;
-import mx.infotec.dads.kukulkan.shell.util.FilesCommons;
 
 /**
  * Docker Commands
@@ -36,28 +41,41 @@ public class FileNavigationCommands {
     private LocationChangeEventPublisher publisher;
 
     @ShellMethod("Show the current direction")
-    public void pwd() {
-        commandService.printf(nav.getCurrentPath().toString());
+    public AttributedString pwd() {
+        return formatNormalText(nav.getCurrentPath().toString());
     }
 
     @ShellMethod(value = "List the currents files", key = { "ls", "ll", "dir" })
-    public List<CharSequence> ls() {
-        return FilesCommons.showFiles(nav.getCurrentPath());
+    public List<AttributedString> ls() {
+        return showFiles(nav.getCurrentPath());
     }
 
     @ShellMethod("Change to other location")
-    public void cd(@ShellOption(valueProvider = DirectoryValueProvider.class, defaultValue = NULL) String dir) {
-        Path newPath = null;
-        if ("..".equals(dir)) {
-            newPath = nav.getCurrentPath().getParent();
-        } else {
-            newPath = Paths.get(nav.getCurrentPath().toAbsolutePath().toString(), dir);
-        }
+    public AttributedString cd(@ShellOption(valueProvider = DirectoryValueProvider.class) @NotNull String dir) {
+        Path toChange = Paths.get(dir);
+        Path newPath = getNewPath(toChange);
+        return validateNewPath(newPath);
+    }
+
+    private AttributedString validateNewPath(Path newPath) {
         if (newPath.toFile().exists()) {
             nav.setCurrentPath(newPath);
             publisher.publishEvent(EventType.FILE_NAVIGATION);
+            return formatNormalText(newPath.toString());
         } else {
-            commandService.printf("The dir does not exist: " + newPath.toString());
+            return formatDirNotExistText(newPath.toString());
         }
+    }
+
+    private Path getNewPath(Path toChange) {
+        Path newPath;
+        if ("..".equals(toChange.toString())) {
+            newPath = nav.getCurrentPath().getParent();
+        } else if (toChange.isAbsolute()) {
+            newPath = toChange;
+        } else {
+            newPath = Paths.get(nav.getCurrentPath().toAbsolutePath().toString(), toChange.toString());
+        }
+        return newPath;
     }
 }

@@ -11,7 +11,6 @@ import org.jline.utils.AttributedStyle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import mx.infotec.dads.kukulkan.shell.domain.Line;
 import mx.infotec.dads.kukulkan.shell.domain.ShellCommand;
 import mx.infotec.dads.kukulkan.shell.services.PromptService;
 import mx.infotec.dads.kukulkan.shell.util.FilesCommons;
@@ -33,7 +32,8 @@ public class PromptServiceImpl implements PromptService {
         if (FilesCommons.hasGitFiles(currentPath)) {
             List<CharSequence> result = commandService.exec(currentPath,
                     new ShellCommand(GIT).addArg("rev-parse").addArg("--abbrev-ref").addArg("HEAD"),
-                    (line) -> Optional.ofNullable(new AttributedString(line)));
+                    line -> Optional.ofNullable(new AttributedString(line)));
+
             dirPrompt = AttributedString.join(new AttributedString(""),
                     new AttributedString(" @", AttributedStyle.BOLD.foreground(AttributedStyle.YELLOW)),
                     new AttributedString("git/" + result.get(0).toString(),
